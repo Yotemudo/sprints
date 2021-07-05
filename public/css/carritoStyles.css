@@ -103,8 +103,29 @@ body {
 .carrito-volver a{
     text-decoration: none;
 }
+/* Imagen parametrizada */
+.carrito-tu-pack{
+    align-content: center;
+    text-align: center;
+  
+    display: flex;
+    flex-direction:column;
+    align-items: center;
 
-
+    
+}
+.carrito-tu-pack img{
+    align-content: center;
+    font-size: 10px;
+  
+    
+}
+.btn-precio {
+    width: 5vw;
+    height: 5vw;
+   
+}
+/* Termina imagen parametrizada */
 .carrito-pack{
     position:relative;
     padding:1em 1.5em;

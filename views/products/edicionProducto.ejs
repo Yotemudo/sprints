@@ -24,42 +24,48 @@
         <%- include('../partials/header') %> 
         <main>
             <div class="content">
-                <h2 class="logo">Edición de <span class="logo2"> un Pack </span></h2>
+                <h2 class="logo">Edición de Pack<span class="logo2"> <%=productoEncontrado.numeroDePack%> </span></h2>
             <div class="formulario_entero">
                 <div class="formulario_de_carga_edicion">
                     <h1> Datos del Servicio </h1>
-                    <form name="cargaProducto" method="post" action="">
+                    
+                    <form name="edicionProducto" method="POST" action="/products/edicionProducto/<%=productoEncontrado.id%>?_method=PUT" method="POST" enctype="multipart/form-data">
                         <p>
-                            <label for="numeros">N° de Pack</label>
-                            <input type="text" name="numeros" required>
+                            <label for="numeroDePack">N° de Pack</label>
+                            <input type="text" name="numeroDePack" required placeholder="<%=productoEncontrado.numeroDePack%>">
                         </p>
                         <p>
-                            <label for="texto">Radio en Km</label>
-                            <input type="text" name="texto">
+                            <label for="radio">Radio en Km</label>
+                            <input type="text" name="radio" placeholder="<%=productoEncontrado.radio%>">
                         </p>
                         <p>
-                            <label for="costo">Costo</label>
-                            <input type="text" name="costo" >
+                            <label for="precio">Costo</label>
+                            <input type="text" name="precio" placeholder="<%=productoEncontrado.precio%>" >
                         </p>
                         <p>
-                            <label for="medidas">Medidas</label>
-                            <input type="texto" name="medidas">
+                            <label for="superficie">Medidas</label>
+                            <input type="texto" name="superficie" placeholder="<%=productoEncontrado.superficie%>">
                         </p>
-                            <button type="submit">VER PRELIMINAR</button>
+                        <p>
+                            <label for="imagenProducto" class="form-label">Imagen</label>
+						    <input type="file" name="imagenProducto" />
+                        </p>
+                        
                             <button type="submit">ENVIAR</button>
                         </p>
+                        
                     </form>
                 </div>
                 <div class="formulario_de_info">
                     <div class="packUnitario">
-                        <img src="/img/camiones/flota-00_2.jpg" alt="Camion Mudanza 1" class="imagenCamion">
-                        <h3>PACK 1</h3>
-                        <span>Radio 30km </span> <br>
-                        <span>2,25 Mts2 </span> <br>
-                        <span>$10.500 </span> <br>
+                        <img src="/img/camiones/<%=productoEncontrado.imagen%>" alt="Camion Mudanza 1" class="imagenCamion">
+                        <h3>Pack N°<%=productoEncontrado.numeroDePack%></h3>
+                        <span>Radio <%=productoEncontrado.radio%>km </span> <br>
+                        <span><%=productoEncontrado.superficie%> Mts2 </span> <br>
+                        <span>$<%=productoEncontrado.precio%></span> <br>
                         <span>Medidas </span> <br>
                         <span><a href="/carrito"><img src="/img/carrito1.png" alt="" class="btn-precio "></a></span>
-                      </div>
+                    </div>
                 </div>
             </div>
         </main>

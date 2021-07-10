@@ -112,21 +112,6 @@ h2{
   .rrss{
     display: flex;
   }
-<<<<<<< HEAD:public/css/styles.css
-  .divFooter{
-      display:flex;
-      height: 20vh;
-      align-items: flex-end;
-      justify-content: space-around;
-  }
-@media (max-width:670px){
-    body{
-        background:linear-gradient(to top,rgba(190, 179, 18, 0.87),transparent);
-    }
-    .divFooter{
-        padding-bottom: 10px;
-    }
-=======
   /* footer */
   .mainFooter{
     display: grid;
@@ -137,7 +122,6 @@ h2{
     text-align: center;
     background-color: rgba(0, 0, 0, 0.9);
     color:seashell;
->>>>>>> 5104575bfc7403eb24dac29f4b7abab0ae845224:public/css/indexStyles.css
 }
 .mainFooter img{
     width: 3vw;
@@ -218,9 +202,6 @@ h2{
     .video{
         align-content: center;
         order:-1;
-    }
-    .divFooter{
-        padding-bottom: 20px;
     }
 }
 

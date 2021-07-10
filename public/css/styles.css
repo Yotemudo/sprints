@@ -110,9 +110,18 @@ h2{
   .rrss{
     display: flex;
   }
+  .divFooter{
+      display:flex;
+      height: 20vh;
+      align-items: flex-end;
+      justify-content: space-around;
+  }
 @media (max-width:670px){
     body{
         background:linear-gradient(to top,rgba(190, 179, 18, 0.87),transparent);
+    }
+    .divFooter{
+        padding-bottom: 10px;
     }
 }
 @media (max-width: 950px) {
@@ -165,6 +174,9 @@ h2{
     .video{
         align-content: center;
         order:-1;
+    }
+    .divFooter{
+        padding-bottom: 20px;
     }
 }
 

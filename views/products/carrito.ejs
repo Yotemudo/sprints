@@ -1,39 +1,32 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
     <title>Carrito</title>
-    <!--esto es lo que se ve en la pestaña del navegador-->
     <link rel="stylesheet" href="/css/carritoNormalize.css">
     <link rel="stylesheet" href="/css/fuentes.css">
     <link rel="stylesheet" href="/css/carritoStyles.css">
 </head>
 
 <body>
-    <header>
-        <div class="carritoContenedor01">
-            <div class="logo">
-                <a href="/">
-                <img id= "your" width="250" height="55" src= '/img/your-logo.png'alt= 'Imagen de logo'></img>
-            </a>
-            </div>
-        </div>
-        <div class="carritoContenedor02">
-            <h3>CONFIRMA TU PACK</h3>
-        </div>
-    </header>
-
+    <%- include('../partials/header') %> 
     <main>
         <div class="carritoContenedor03">
             <div class="carrito-tu-pack">
-                <a href"#" class="botonPack">
+                
                     <button class="carrito-pack">Este es tu pack
                         <span class="icon"><img width="25" height="25" src='/img/hecho-garrapata.png'
                                 alt='Imagen de tilde'></img></span>
                     </button>
-                </a>
+                    <img src="/img/camiones/flota-00_2.jpg" alt="Camion Mudanza 1" class="imagenCamion">
+          <h3>PACK 1</h3>
+          <span>Radio 30km </span> <br>
+          <span>2,25 Mts2 </span> <br>
+          <span>$10.500 </span> <br>
+          <span>Medidas </span> <br>
+          <span><a href="/products/carrito"><img src="/img/carrito1.png" alt="" class="btn-precio "></a></span>  
+               
             </div>
             <div class="carrito-servicios">
                 <h4 class="carrito-serad">Servicios Adicionales</h4>
@@ -82,14 +75,16 @@
 
         </div>
     </main>
-    <footer class="footer">
+
+    <%- include('../partials/footer') %> 
+    <!-- <footer class="footer">
         <div class="redesSocialesFooter">
           
           <div class ="rrss"><img src="/img/facebook.png" class="logoFacebook"/></div>
           <div class="rrss"><img src="/img/twitter.png" class="logoTwitter"/></div>
           <div class="rrss"><img src="/img/linkedin.png" class="logoFacebook"/></div>  
         </div>  
-      </footer>
+      </footer> -->
 </body>
 
 </html>

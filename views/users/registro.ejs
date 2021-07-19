@@ -31,44 +31,138 @@
         <div class="content">
             <h2 class="logo">Solicitud de <span class="logo2"> Registro </span></h2>
         <div class="formulario_entero">
-            <div class="formulario_de_contacto">
-                <h1> Datos de usuario </h1>
+            <div class="formulario_de_contacto_gral">
+                <h1> Datos de usuario </h1> 
+                   
                 <form action="/registro" method='POST' enctype="multipart/form-data">
-                    <p>
-                        <label for="nombre">NOMBRE </label>
-                        <input type="text" name="nombre" id="nombre">
-                    </p>
-                    <p>
-                        <label for="apellido">APELLIDO</label>
-                        <input type="text" name="apellido" id="apellido">
-                    </p>
-                    <p>
-                        <label for="usuario">USUARIO</label>
-                        <input type="text" name="usuario" id="usuario" required>
-                    </p>
-                    <p>
-                        <label for="email">EMAIL</label>
-                        <input type="text" name="email" id="email">
-                    </p>
-                    <p>
-                        <label for="telefono">TELEFONO</label>
-                        <input type="tel" name="telefono" id="telefono" >
-                    </p>
-                    <p>
-                        <label for="domicilio">DOMICILIO</label>
-                        <input type="text" name="domicilio" id="domicilio" >
-                    </p>
-                    <p>
-                        <label for="localidad">LOCALIDAD</label>
-                        <input type="text" name="localidad" id="localidad" >
-                    </p>
-                    <p>
-                        <label for="claveUsuario">CONTRASEÑA</label>
-                        <input type="password" "password" name="claveUsuario" id="claveUsuario">
-                    </p>
-                    
-                       <button type="submit">ENVIAR</button>
-                    </p>
+                    <div class="datos">
+                        <div class="datos_de_contacto">
+                            <div class="cajaDato">
+                                <label for="nombre">NOMBRE </label>
+                                <input 
+                                    type="text" 
+                                    name="nombre" 
+                                    id="nombre"
+                                    value="<%= locals.oldData ? oldData.nombre : "" %> "
+                                >
+                                <% if (locals.errors && errors.nombre) { %>
+                                    <div class="classeError">
+                                        <%=errors.nombre.msg %>
+                                    </div> 
+                                <% } %>
+                            </div>                           
+                            <div class="cajaDato">
+                                <label for="apellido">APELLIDO</label>
+                                <input 
+                                    type="text" 
+                                    name="apellido" 
+                                    id="apellido"
+                                    value="<%= locals.oldData ? oldData.apellido : "" %> "
+                                >
+                                <% if (locals.errors && errors.apellido) { %>
+                                    <div class="classeError">
+                                        <%=errors.apellido.msg %>
+                                    </div> 
+                                <% } %>
+                            </div>
+                            <div class="cajaDato">
+                                <label for="usuario">USUARIO</label>
+                                <input 
+                                    type="text" 
+                                    name="usuario" 
+                                    id="usuario"
+                                    value="<%= locals.oldData ? oldData.usuario : "" %> "
+                                >
+                                <% if (locals.errors && errors.usuario) { %>
+                                    <div class="classeError">
+                                        <%=errors.usuario.msg %>
+                                    </div> 
+                                <% } %>
+                            </div>
+                            <div class="cajaDato">
+                                <label for="email">E-MAIL</label>
+                                <input 
+                                    type="text" 
+                                    name="email" 
+                                    id="email"
+                                    value="<%= locals.oldData ? oldData.email : "" %> "
+                                >
+                                <% if (locals.errors && errors.email) { %>
+                                    <div class="classeError">
+                                        <%=errors.email.msg %>
+                                    </div> 
+                                <% } %>
+                            </div>
+                            <div class="cajaDato">
+                                <label for="telefono">TELEFONO</label>
+                                <input 
+                                    type="tel" 
+                                    name="telefono" 
+                                    id="telefono" 
+                                    value="<%= locals.oldData ? oldData.telefono : "" %> "
+                                >
+                                <% if (locals.errors && errors.telefono) { %>
+                                    <div class="classeError">
+                                        <%=errors.telefono.msg %>
+                                    </div> 
+                                <% } %>
+                            </div>
+                            <div class="cajaDato">
+                                <label for="domicilio">DOMICILIO</label>
+                                <input 
+                                    type="text" 
+                                    name="domicilio" 
+                                    id="domicilio" 
+                                    value="<%= locals.oldData ? oldData.domicilio : "" %> "
+                                >
+                                <% if (locals.errors && errors.domicilio) { %>
+                                    <div class="classeError">
+                                        <%=errors.domicilio.msg %>
+                                    </div> 
+                                <% } %>
+                            </div>
+                            <div class="cajaDato">
+                                <label for="localidad">LOCALIDAD</label>
+                                <input 
+                                    type="text" 
+                                    name="localidad" 
+                                    id="localidad" 
+                                    value="<%= locals.oldData ? oldData.localidad : "" %> "
+                                    >
+                                <% if (locals.errors && errors.localidad) { %>
+                                    <div class="classeError">
+                                        <%=errors.localidad.msg %>
+                                    </div> 
+                                <% } %>
+                            </div>
+                            <div class="cajaDato">
+                                <label for="claveUsuario">CONTRASEÑA</label>
+                                <input 
+                                    type="password" "password" 
+                                    name="claveUsuario" 
+                                    id="claveUsuario"
+                                    value="<%= locals.oldData ? oldData.claveUsuario : "" %> "
+                                >
+                            </div>
+                            
+                            <div class="cajaDato">
+                                <label for="fotoDePerfil">FOTO DE PERFIL</label>
+                                <input 
+                                    type="file" 
+                                    name="fotoDePerfil" 
+                                    id="fotoDePerfil"
+                                >
+                                <% if (locals.errors && errors.fotoDePerfil) { %>
+                                    <div class="classeError">
+                                        <%=errors.fotoDePerfil.msg %>
+                                    </div> 
+                                <% } %>
+                            </div>
+                        </div>                    
+                        <div> 
+                            <button type="submit">ENVIAR</button>
+                        </div>
+                    </div>
                 </form>
             </div>
             <div class="formulario_de_info">

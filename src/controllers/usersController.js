@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const usersFilePath = path.join(__dirname, '../dataBase/usersDb.json');
 const totalUsers = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
+const {validationResult} = require ('express-validator')
 
 const usersController = {
     login: (req,res) => {
@@ -34,6 +35,16 @@ const usersController = {
 
     registro: (req,res) => {
         res.render ('users/registro');
+    },
+    ProcesarRegistro: (req,res) => {
+        let errors = validationResult(req); //errors es un Objeto literal, que tiene una propiedad "errors" que es un array
+        let old = req.body
+        if (errors.isEmpty()){
+            return res.render('index');
+        }else{
+            return res.render('users/registro', {errors:errors.mapped(), oldData:old});  // si fuese un array, utilizo array()
+            //  return res.send (errors) 
+        }
     },
     profileAdmin: (req,res) => {
         res.render ('/profileAdmin');

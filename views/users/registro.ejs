@@ -43,7 +43,7 @@
                                     type="text" 
                                     name="nombre" 
                                     id="nombre"
-                                    value="<%= locals.oldData ? oldData.nombre : "" %> "
+                                    value="<%=locals.oldData?oldData.nombre:""%>"
                                 >
                                 <% if (locals.errors && errors.nombre) { %>
                                     <div class="classeError">
@@ -57,7 +57,7 @@
                                     type="text" 
                                     name="apellido" 
                                     id="apellido"
-                                    value="<%= locals.oldData ? oldData.apellido : "" %> "
+                                    value="<%=locals.oldData?oldData.apellido:""%>"
                                 >
                                 <% if (locals.errors && errors.apellido) { %>
                                     <div class="classeError">
@@ -71,7 +71,7 @@
                                     type="text" 
                                     name="usuario" 
                                     id="usuario"
-                                    value="<%= locals.oldData ? oldData.usuario : "" %> "
+                                    value="<%=locals.oldData?oldData.usuario:""%>"
                                 >
                                 <% if (locals.errors && errors.usuario) { %>
                                     <div class="classeError">
@@ -85,7 +85,7 @@
                                     type="text" 
                                     name="email" 
                                     id="email"
-                                    value="<%= locals.oldData ? oldData.email : "" %> "
+                                    value="<%=locals.oldData?oldData.email:""%>"
                                 >
                                 <% if (locals.errors && errors.email) { %>
                                     <div class="classeError">
@@ -99,7 +99,7 @@
                                     type="tel" 
                                     name="telefono" 
                                     id="telefono" 
-                                    value="<%= locals.oldData ? oldData.telefono : "" %> "
+                                    value="<%=locals.oldData?oldData.telefono:""%>"
                                 >
                                 <% if (locals.errors && errors.telefono) { %>
                                     <div class="classeError">
@@ -113,7 +113,7 @@
                                     type="text" 
                                     name="domicilio" 
                                     id="domicilio" 
-                                    value="<%= locals.oldData ? oldData.domicilio : "" %> "
+                                    value="<%=locals.oldData?oldData.domicilio:""%>"
                                 >
                                 <% if (locals.errors && errors.domicilio) { %>
                                     <div class="classeError">
@@ -127,7 +127,7 @@
                                     type="text" 
                                     name="localidad" 
                                     id="localidad" 
-                                    value="<%= locals.oldData ? oldData.localidad : "" %> "
+                                    value="<%=locals.oldData?oldData.localidad:""%>"
                                     >
                                 <% if (locals.errors && errors.localidad) { %>
                                     <div class="classeError">
@@ -141,7 +141,7 @@
                                     type="password" "password" 
                                     name="claveUsuario" 
                                     id="claveUsuario"
-                                    value="<%= locals.oldData ? oldData.claveUsuario : "" %> "
+                                    value="<%=locals.oldData?oldData.claveUsuario:""%>"
                                 >
                             </div>
                             
@@ -154,7 +154,7 @@
                                 >
                                 <% if (locals.errors && errors.fotoDePerfil) { %>
                                     <div class="classeError">
-                                        <%=errors.fotoDePerfil.msg %>
+                                        <%=errors.fotoDePerfil.msg%>
                                     </div> 
                                 <% } %>
                             </div>

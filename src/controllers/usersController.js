@@ -47,7 +47,7 @@ const usersController = {
         }
     },
     profileAdmin: (req,res) => {
-        res.render ('/profileAdmin');
+        res.render ('users/profileAdmin');
     },
     profileUser: (req,res) => {
         res.render ('users/profileUser');

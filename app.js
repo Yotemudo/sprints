@@ -25,6 +25,7 @@ const userRoutes = require ('./src/routes/userRoutes');
 
 app.use('/',mainRoutes);
 app.use('/products',productRoutes);
+app.use('/users',userRoutes);
 
 app.listen(process.env.PORT || 3000, function(){
     console.log('Servidor corriendo en el puerto 3000');

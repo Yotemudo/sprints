@@ -12,6 +12,10 @@ const usersController = require ('../controllers/usersController');
 const validations = require ('../../middlewares/validations');
 const multerUsersDiskStorage = require ('../../middlewares/multerUsersDiskStorage')
 // Tratamiento de Imagenes
+
+
+// Multer
+
 const uploadFile = multer({ storage: multerUsersDiskStorage });
 
 // RUTAS

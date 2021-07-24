@@ -46,60 +46,39 @@ const usersController = {
     ProcesarRegistro: (req,res) => {
         const errResults = validationResult(req); //errors es un Objeto literal, que tiene una propiedad "errors" que es un array
         let old = req.body
-        if (errResults.isEmpty()){
-            let newUser = {
-                imagen: req.file.filename,
-                id: totalUsers[totalUsers.length-1].id + 1,
-                nombre: req.body.nombre,
-                apellido: req.body.apellido,
-                usuario: req.body.usuario,
-                contraseña: req.body.claveUsuario,
-                email: req.body.email,
-                telefono: req.body.telefono,
-                domicilio: req.body.domicilio,
-                localidad: req.body.localidad,
-                userAdmin: 0
-            }
-        
-        totalUsers.push(newUser)
-        fs.writeFileSync(usersFilePath, JSON.stringify(totalUsers,null, ' '));
-        res.send ('El usuario ha sido creado');
-        
-        }else{
-            res.render('users/registro', {errors:errResults.mapped(), oldData:old});  // si fuese un array, utilizo array()
-            //  return res.send (errors) 
-        }
     
-        /*if (!errResults.isEmpty()){     
+        if (!errResults.isEmpty()){     //PRIMERO DEBEMOS FIJARNOS SI HAY ERRORES, LUEGO CARGAR
         
             res.render('users/registro',{
             errors: errResults.mapped(),
             oldData:old
             });
-        }  */
-       
-        let userInDB = User.findByField('email',req.body.email)
+        }  
 
-            if (userInDB){
-                return res.render('users/registro',{
-                    errors: {
-                        email: {
-                            msg: 'Este email ya está registrado'
-                        }
+        let userInDB = User.findByField('email',req.body.email) //ESTO ES PARA QUE DETECTE USUARIOS CON EMAIL IDENTICOS.
+
+        if (userInDB){     //ESTO ES PARA QUE MANDE UN ERROR QUE EL USUARIO ESTÁ REGISTRADO
+            return res.render('users/registro',{
+                errors: {
+                    email: {
+                    msg: 'Este email ya está registrado'
+                    }
                     },
-                    oldData: old
+                oldData: old
                 }
             )
         };
 
-            let userToCreate = {
+        let userToCreate = {   //ESTO ES PARA CREAR USUARIO
             ...req.body,
             claveUsuario: bcryptjs.hashSync(req.body.claveUsuario,10),
             imagen: req.file.filename
-            };
-        //    User.create(userToCreate); /*ESTO ERA POR SI QUERÍAMOS USAR EL MODELS (No se puede incluir el nombre de la foto) */
-        //    return res.send ('El usuario ha sido creado');
-      //  }
+        };
+
+        User.create(userToCreate); 
+
+        return res.redirect('user/login');
+    
     },
     profileAdmin: (req,res) => {
         res.render ('users/profileAdmin');

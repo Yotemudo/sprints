@@ -69,35 +69,36 @@ const usersController = {
             res.render('users/registro', {errors:errResults.mapped(), oldData:old});  // si fuese un array, utilizo array()
             //  return res.send (errors) 
         }
-        /*if (errResults.errors.length>0){
-            res.render('.users/registro',{
+    
+        /*if (!errResults.isEmpty()){     
+        
+            res.render('users/registro',{
             errors: errResults.mapped(),
             oldData:old
             });
-        }else{   */
-    
-
-        /*    let userInDB = User.findByField('email',req.body.email)
+        }  */
+       
+        let userInDB = User.findByField('email',req.body.email)
 
             if (userInDB){
-                return res.render('.users/registro',{
-                    errResults: {
+                return res.render('users/registro',{
+                    errors: {
                         email: {
                             msg: 'Este email ya está registrado'
                         }
                     },
                     oldData: old
                 }
-            )};
+            )
+        };
 
             let userToCreate = {
             ...req.body,
             claveUsuario: bcryptjs.hashSync(req.body.claveUsuario,10),
             imagen: req.file.filename
             };
-
-            User.create(userToCreate); /*ESTO ERA POR SI QUERÍAMOS USAR EL MODELS (No se puede incluir el nombre de la foto) */
-            return res.send ('El usuario ha sido creado');
+        //    User.create(userToCreate); /*ESTO ERA POR SI QUERÍAMOS USAR EL MODELS (No se puede incluir el nombre de la foto) */
+        //    return res.send ('El usuario ha sido creado');
       //  }
     },
     profileAdmin: (req,res) => {

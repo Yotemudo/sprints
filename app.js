@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require ('path');
 const methodOverride =  require('method-override');
+const logMiddleware = require ('./middlewares/logMiddlewares')
 
 const app = express();
 
@@ -10,6 +11,7 @@ app.use(express.static(path.join(__dirname, './public')));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json()); // Necesario para trabajar archivos JSON
 app.use(methodOverride('_method')); // necesario para transformar los POST en PUT Y DELETE
+app.use(logMiddleware);
 
 
 

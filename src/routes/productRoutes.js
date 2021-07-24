@@ -5,18 +5,7 @@ const multer = require('multer'); // Requiero el multer para poder luego subir l
 const productController = require ('../controllers/productController');
 
 // Tratamiento de Imagenes
-
-const multerDiskStorage = multer.diskStorage({
-    destination: function(req, file, cb) {       // request, archivo y callback que almacena archivo en destino
-     cb(null, path.join(__dirname,'../../public/img/camiones'));    // Ruta donde almacenamos el archivo
-    },
-    filename: function(req, file, cb) {          // request, archivo y callback que almacena archivo en destino
-     let imageName = 'img' + '-' + file.originalname;   // milisegundos y extensión de archivo original
-     cb(null, imageName);         
-    }
-});
-
-
+const multerDiskStorage = require ('../../middlewares/multerDiskStorage')
 const uploadFile = multer({ storage: multerDiskStorage });
 
 
@@ -42,7 +31,6 @@ router.get('/edicionProducto/:id?',productController.edicion);
 router.put('/edicionProducto/:id',uploadFile.single('imagenProducto'),productController.actualizar);
 
 // - /products/:id (DELETE)    —> Acción de eliminación de un producto
-    // FALTA REALIZAR!!!!!!!!!!!!!!!!
 router.delete('/:id',productController.destroy);
 
 module.exports = router;

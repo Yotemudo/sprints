@@ -4,42 +4,10 @@ const path = require ('path');
 const multer = require('multer'); // Requiero el multer para poder luego subir las imagenes y tratarlas.
 const {body} = require ('express-validator');
 const usersController = require ('../controllers/usersController');
-
+const validations = require ('../../middlewares/validations');
+const multerUsersDiskStorage = require ('../../middlewares/multerUsersDiskStorage')
 // Tratamiento de Imagenes
-
-const multerUsersDiskStorage = multer.diskStorage({
-    destination: function(req, file, cb) {       // request, archivo y callback que almacena archivo en destino
-     cb(null, path.join(__dirname,'../../public/img/img_users'));    // Ruta donde almacenamos el archivo
-    },
-    filename: function(req, file, cb) {          // request, archivo y callback que almacena archivo en destino
-     let fileName = 'img_user' + '-' + file.originalname;   // milisegundos y extensión de archivo original
-     cb(null, fileName);         
-    }
-});
-
-
 const uploadFile = multer({ storage: multerUsersDiskStorage });
-
-const validations = [
-    body('nombre').notEmpty().withMessage('Ingresa tu nombre'),
-    body('apellido').notEmpty() .withMessage('Ingresa tu apellido'),
-    body('usuario').notEmpty() .withMessage('Ingresa un usuario'),
-    body('email')
-        .notEmpty() .withMessage('Ingresa un email') .bail()
-        .isEmail() .withMessage('Ingresa un email válido'),
-    body('telefono').notEmpty() .withMessage('Ingresa un teléfono válido'),
-    body('domicilio').notEmpty() .withMessage('Ingresa tu domicilio'),
-    body('localidad').notEmpty() .withMessage('Ingresa tu localidad'),
-    body('fotoDePerfil') .custom((value,{req})=>{
-        let file = req.file
-        if(file == null){
-            throw new Error ('Debes subir una imagen de perfil');
-        }
-    })
-]
-
-//hoy  router.get('/', mainController.index);
-//hoy  router.get('/quienesSomos',mainController.quienesSomos);
 
 // RUTAS
 

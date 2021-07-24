@@ -1,5 +1,6 @@
 
 const User = require('../../models/User');
+const bcryptjs = require('bcryptjs');
 
 const fs = require('fs');
 const path = require('path');
@@ -68,19 +69,22 @@ const usersController = {
         //     res.render('users/registro', {errors:errors.mapped(), oldData:old});  // si fuese un array, utilizo array()
         //     //  return res.send (errors) 
         // }
-        if (errResults.errors.length>0){
+        /*if (errResults.errors.length>0){
             res.render('.users/registro',{
             errors: errResults.mapped(),
             oldData:old
             });
-        }else{   
+        }else{   */
+        
             let userToCreate = {
             ...req.body,
+            claveUsuario: bcryptjs.hashSync(req.body.claveUsuario,10),
             imagen: req.file.filename
             };
+            
             User.create(userToCreate); /*ESTO ERA POR SI QUERÍAMOS USAR EL MODELS (No se puede incluir el nombre de la foto) */
             return res.send ('El usuario ha sido creado');
-        }
+      //  }
     },
     profileAdmin: (req,res) => {
         res.render ('users/profileAdmin');

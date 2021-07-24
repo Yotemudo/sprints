@@ -118,5 +118,19 @@
   "localidad": "Capital Federal",
   "claveUsuario": "Hola123",
   "imagen": "img_user-152197.png"
+ },
+ {
+  "id": 10,
+  "profile": "usuario",
+  "userAdmin": 0,
+  "nombre": "Javier",
+  "apellido": "Herrera",
+  "usuario": "JaviH",
+  "email": "javi@hd.com",
+  "telefono": "112345678",
+  "domicilio": "San Martín 41",
+  "localidad": "Capital Federal",
+  "claveUsuario": "$2a$10$HAJJ/JqJmogEP00YGYFiu.4B9PXWE8DYQ4didnQuTlippi61yOPu2",
+  "imagen": "img_user-31046.jpg"
  }
 ]

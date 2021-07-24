@@ -1,10 +1,15 @@
+
+const User = require('../../models/User');
+
 const fs = require('fs');
 const path = require('path');
 const usersFilePath = path.join(__dirname, '../dataBase/usersDb.json');
 const totalUsers = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
+
 const {validationResult} = require ('express-validator')
 
 const usersController = {
+
     login: (req,res) => {
        res.render ('users/login');
     },
@@ -36,14 +41,45 @@ const usersController = {
     registro: (req,res) => {
         res.render ('users/registro');
     },
+
     ProcesarRegistro: (req,res) => {
-        let errors = validationResult(req); //errors es un Objeto literal, que tiene una propiedad "errors" que es un array
+        const errResults = validationResult(req); //errors es un Objeto literal, que tiene una propiedad "errors" que es un array
         let old = req.body
-        if (errors.isEmpty()){
-            return res.render('index');
-        }else{
-            return res.render('users/registro', {errors:errors.mapped(), oldData:old});  // si fuese un array, utilizo array()
-            //  return res.send (errors) 
+        // if (errors.isEmpty()){
+        //     let newUser = {
+        //         imagen: req.file.filename,
+        //         id: totalUsers[totalUsers.length-1].id + 1,
+        //         nombre: req.body.nombre,
+        //         apellido: req.body.apellido,
+        //         usuario: req.body.usuario,
+        //         contraseña: req.body.contraseña,
+        //         email: req.body.email,
+        //         telefono: req.body.telefono,
+        //         domicilio: req.body.domicilio,
+        //         localidad: req.body.localidad,
+        //         userAdmin: 0
+        //     }
+        
+        // totalUsers.push(newUser)
+        // fs.writeFileSync(usersFilePath, JSON.stringify(totalUsers,null, ' '));
+        // res.send ('El usuario ha sido creado');
+        
+        // }else{
+        //     res.render('users/registro', {errors:errors.mapped(), oldData:old});  // si fuese un array, utilizo array()
+        //     //  return res.send (errors) 
+        // }
+        if (errResults.errors.length>0){
+            res.render('.users/registro',{
+            errors: errResults.mapped(),
+            oldData:old
+            });
+        }else{   
+            let userToCreate = {
+            ...req.body,
+            imagen: req.file.filename
+            };
+            User.create(userToCreate); /*ESTO ERA POR SI QUERÍAMOS USAR EL MODELS (No se puede incluir el nombre de la foto) */
+            return res.send ('El usuario ha sido creado');
         }
     },
     profileAdmin: (req,res) => {
@@ -52,6 +88,6 @@ const usersController = {
     profileUser: (req,res) => {
         res.render ('users/profileUser');
     }
-};
+}
 
-module.exports = usersController; 
+module.exports = usersController;

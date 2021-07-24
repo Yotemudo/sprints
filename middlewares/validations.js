@@ -9,7 +9,7 @@ const validations = [
     body('telefono').notEmpty() .withMessage('Ingresa un teléfono válido'),
     body('domicilio').notEmpty() .withMessage('Ingresa tu domicilio'),
     body('localidad').notEmpty() .withMessage('Ingresa tu localidad'),
-    body('fotoDePerfil') .custom((value,{req})=>{
+    body('fotoDePerfil').custom((value,{req})=>{
         let file = req.file
         if(file == null){
             throw new Error ('Debes subir una imagen de perfil');

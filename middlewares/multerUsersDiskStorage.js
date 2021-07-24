@@ -1,5 +1,6 @@
 const multer = require('multer');
 const path = require ('path');
+
 const multerUsersDiskStorage = multer.diskStorage({
     destination: function(req, file, cb) {       // request, archivo y callback que almacena archivo en destino
      cb(null, path.join(__dirname,'../public/img/img_users'));    // Ruta donde almacenamos el archivo

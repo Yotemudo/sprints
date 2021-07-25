@@ -32,19 +32,21 @@
                     <form name="edicionProducto" method="POST" action="/products/edicionProducto/<%=productoEncontrado.id%>?_method=PUT" method="POST" enctype="multipart/form-data">
                         <p>
                             <label for="numeroDePack">N° de Pack</label>
-                            <input type="text" name="numeroDePack" required placeholder="<%=productoEncontrado.numeroDePack%>">
+                            <input type="text" name="numeroDePack" required placeholder="<%=productoEncontrado.numeroDePack%>" value="<%=productoEncontrado.numeroDePack%>">
                         </p>
                         <p>
                             <label for="radio">Radio en Km</label>
-                            <input type="text" name="radio" placeholder="<%=productoEncontrado.radio%>">
+                            <input type="text" name="radio" placeholder="<%=productoEncontrado.radio%>" value="<%=productoEncontrado.radio%>">
                         </p>
                         <p>
                             <label for="precio">Costo</label>
-                            <input type="text" name="precio" placeholder="<%=productoEncontrado.precio%>" >
+                            <input type="text" name="precio" placeholder="<%=productoEncontrado.precio%>"
+                            value="<%=productoEncontrado.precio%>" >
                         </p>
                         <p>
                             <label for="superficie">Medidas</label>
-                            <input type="texto" name="superficie" placeholder="<%=productoEncontrado.superficie%>">
+                            <input type="texto" name="superficie" placeholder="<%=productoEncontrado.superficie%>"
+                            value="<%=productoEncontrado.superficie%>">
                         </p>
                         <p>
                             <label for="imagenProducto" class="form-label">Imagen</label>

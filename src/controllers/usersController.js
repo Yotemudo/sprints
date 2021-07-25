@@ -15,44 +15,44 @@ const usersController = {
         res.render ('users/registro');
     },
 
-    ProcesarRegistro: (req,res) => {
+    procesarRegistro: (req,res) => {
         const errResults = validationResult(req); //errors es un Objeto literal, que tiene una propiedad "errors" que es un array
-        let old = req.body
+        const old = req.body
     
         if (!errResults.isEmpty()){     //PRIMERO DEBEMOS FIJARNOS SI HAY ERRORES, LUEGO CARGAR
-        
             res.render('users/registro',{
             errors: errResults.mapped(),
             oldData:old
             });
-        }  
-
-        let userInDB = User.findByField('email',req.body.email) //ESTO ES PARA QUE DETECTE USUARIOS CON EMAIL IDENTICOS.
-
-        if (userInDB){     //ESTO ES PARA QUE MANDE UN ERROR QUE EL USUARIO ESTÁ REGISTRADO
-            return res.render('users/registro',{
-                errors: {
-                    email: {
-                    msg: 'Este email ya está registrado'
+        }
+        else{
+            const userInDB = User.findByField('email',req.body.email) //ESTO ES PARA QUE DETECTE USUARIOS CON EMAIL IDENTICOS.
+            if (userInDB){     //ESTO ES PARA QUE MANDE UN ERROR QUE EL USUARIO ESTÁ REGISTRADO
+                 res.render('users/registro',{
+                    errors: {
+                        email: {
+                        msg: 'Este email ya está registrado'
+                        }
+                        },
+                    oldData: old
                     }
-                    },
-                oldData: old
-                }
-            )
-        };
-
-        let userToCreate = {   //ESTO ES PARA CREAR USUARIO
-            ...req.body,
-            claveUsuario: bcryptjs.hashSync(req.body.claveUsuario,10),
-            imagen: req.file.filename
-        };
-
-        User.create(userToCreate); 
-        return res.redirect('login');
+                )
+            }
+        else{
+            let userToCreate = {   //ESTO ES PARA CREAR USUARIO
+                ...req.body,
+                claveUsuario: bcryptjs.hashSync(req.body.claveUsuario,10),
+                imagen: req.file.filename
+            };
+    
+            User.create(userToCreate); 
+            return res.redirect('login');
+        }  
+    }   
     },
 
     login: (req,res) => {
-        return res.render ('users/login');
+     res.render ('users/login');             
     },
 
     loginProcess: (req,res) => {

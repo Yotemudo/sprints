@@ -33,7 +33,7 @@ router.post('/login', usersController.loginProcess);
 router.get('/registro',guestMiddleware, usersController.registro);
 
 //Procesar el Registro
-router.post('/registro', uploadFile.single('fotoDePerfil'), validations, usersController.ProcesarRegistro);
+router.post('/registro', uploadFile.single('fotoDePerfil'), validations, usersController.procesarRegistro);
 
 //Perfil de Usuario
 router.get('/profileAdmin',authMiddleware,usersController.profile);

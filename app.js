@@ -1,4 +1,6 @@
 const express = require('express');
+const session = require('express-session');
+
 const path = require ('path');
 const methodOverride =  require('method-override');
 const logMiddleware = require ('./middlewares/logMiddlewares')
@@ -6,7 +8,11 @@ const logMiddleware = require ('./middlewares/logMiddlewares')
 const app = express();
 
 // ****** Middlewares *******
-
+app.use(session({
+    secret: 'Esto es un secreto',
+    resave: false,
+    saveUninitialized:false,
+}));
 app.use(express.static(path.join(__dirname, './public')));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json()); // Necesario para trabajar archivos JSON

@@ -38,7 +38,7 @@ router.post('/registro', uploadFile.single('fotoDePerfil'), validations, usersCo
 
 
 router.get('/profileAdmin',usersController.profileAdmin);
-router.get('/profileUser',usersController.profileUser);
+router.get('/profileUser',usersController.profile);
 
 
 

@@ -23,6 +23,15 @@ h2{
 .presentacion{
     display:flex;
 }
+.classeError{
+    color: rgb(219, 3, 3);
+    font-size:14px;
+    font-style: italic;
+    font-weight: 600;
+    margin-top: 0px;
+    margin-bottom: 15px;
+    padding: 0%;
+}
 
 .logo{
     margin-left: 0;

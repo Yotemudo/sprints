@@ -11,9 +11,9 @@
     <body class="background">
         <%- include('../partials/header') %> 
             <main>
-                <form name = 'login' Action='login' method='POST' >
+                <form Action='login' method='POST'>
                     <div class="centrado">
-                   
+                    
                         <div class="icono_login"> 
                             <img src="/img/user-solid.svg"> </img>
                         </div>
@@ -21,7 +21,11 @@
                         <p> <label for='usuario'> 
                                 <input class= "formularios" type="text" name="usuario" id="usuario" placeholder="Usuario" 
                                     size="35" maxlength="30" autofocus >
-                                </input> 
+                                    <% if (locals.errors && errors.usuario) { %>
+                                        <div class="classeError">
+                                            <%=errors.usuario.msg %>
+                                        </div>
+                                    <% } %>
                             </label> 
                         </p>
                         <p> <label for='claveUsuario'> 
@@ -34,10 +38,8 @@
                         
                         <div>
                             <button class="carrito-volver" type="submit">
-                                <!--<a href="/login" class="boton_confirmar"> -->
                                     <img src="/img/send.svg" alt="Icono de Ingreso" width="20" height="20" style="vertical-align: middle"> 
                                     CONFIRMAR 
-                                </a>
                             </button>
                         </div>
                         <br>

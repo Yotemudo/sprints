@@ -20,8 +20,12 @@ const uploadFile = multer({ storage: multerUsersDiskStorage });
 
 // RUTAS
 
+// Formulario de el login
 router.get('/login', usersController.login);
-router.post('/login', usersController.accesoAdmin);
+
+// Procesar el login
+router.post('/login', usersController.loginProcess);
+
 // [ check('email').isEmail().withMessage('Email invalido')
 //     check('contraseña').islenght({min:8}).withMessage('la contraseña debe contener 8 caractereses'),
 // ], 

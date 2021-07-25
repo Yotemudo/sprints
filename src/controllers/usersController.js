@@ -87,9 +87,15 @@ const usersController = {
 
     profile: (req,res) => {
         let infoUser = req.session.userLogged;
-        return res.render('users/profileUser', {
-            user: req.session.userLogged
-        })
+        if (infoUser && infoUser.userAdmin == 0){
+            return res.render('users/profileUser', {
+                user: req.session.userLogged
+            })
+        }else{
+            return res.render ('users/profileAdmin',{
+                user: req.session.userLogged
+            });
+        }
     },
     
     /* accesoAdmin: (req,res)=>{

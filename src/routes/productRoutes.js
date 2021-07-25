@@ -1,8 +1,14 @@
 const express = require ('express');
 const router = express.Router();
 const path = require ('path');
-const multer = require('multer'); // Requiero el multer para poder luego subir las imagenes y tratarlas.
+
 const productController = require ('../controllers/productController');
+
+
+// Middlewares
+const multer = require('multer'); // Requiero el multer para poder luego subir las imagenes y tratarlas.
+
+
 
 // Tratamiento de Imagenes
 const multerDiskStorage = require ('../../middlewares/multerDiskStorage')

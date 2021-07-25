@@ -43,19 +43,24 @@
               <span><%= products[i].superficie %> Mts2 </span> <br>
               <span>$<%= products[i].precio %> </span> <br>
               <span>Medidas </span> <br>
-              <div class="carrito-tu-pack"> 
-                  <button class="carrito-pack">
-                    <a href="/products/edicionProducto/<%= products[i].id %>">EDITAR</a>
-                  </button>
-                </a>
-              </div>
-              <div class="carrito-tu-pack">
-                <form action="/products/<%=products[i].id %>?_method=DELETE" method="POST" onsubmit="return confirm('Esta seguro que desea eliminarlo?');">
-                  <button class="carrito-pack"  type="submit" class="action-button delete">
-                    ELIMINAR
-                  </button>
-                </form>
-              </div>
+              
+                <% if (locals.isLogged) { %>
+                  <div class="carrito-tu-pack"> 
+                    <button class="carrito-pack">
+                      <a href="/products/edicionProducto/<%= products[i].id %>">EDITAR</a>
+                    </button>
+                  </a>
+                </div>
+                <div class="carrito-tu-pack">
+                  
+                  <form action="/products/<%=products[i].id %>?_method=DELETE" method="POST" onsubmit="return confirm('Esta seguro que desea eliminarlo?');">
+                    <button class="carrito-pack"  type="submit" class="action-button delete">
+                      ELIMINAR
+                    </button>
+                  </form>
+                </div>
+                <% } %>
+                
               <span><a href="/products/carrito/<%=products[i].id%>"><img src="/img/carrito1.png" alt="" class="btn-precio "></a></span>
             </div>
           <% } %>

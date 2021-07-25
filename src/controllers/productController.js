@@ -1,6 +1,7 @@
 const fs = require ('fs');
 const path = require ('path');
 const { send } = require('process');
+const { localsName } = require('ejs');
 
 const productsFilePath = path.join(__dirname, '../dataBase/productsDb.json');
 const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
@@ -13,7 +14,7 @@ const productController = {
     //Para mostrar todo el listado de productos
 
     listado: (req,res) => {
-    res.render ('products/producto',{products:products,users:users});
+        res.render ('products/producto',{products:products});
     },
 
     //Para mostrar el detalle de uno de los productos 

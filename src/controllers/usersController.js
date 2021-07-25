@@ -77,7 +77,7 @@ const usersController = {
 
         User.create(userToCreate); 
 
-        return res.redirect('user/login');
+        return res.redirect('login');
     
     },
     profileAdmin: (req,res) => {

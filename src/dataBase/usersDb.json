@@ -57,70 +57,6 @@
  },
  {
   "id": 5,
-  "nombre": "Javi",
-  "apellido": "Herrera",
-  "usuario": "JaviH",
-  "email": "javi@hd.com",
-  "telefono": "112987563",
-  "domicilio": "San Martín 41",
-  "localidad": "Capital Federal",
-  "claveUsuario": "Hola123"
- },
- {
-  "id": 6,
-  "profile": "usuario",
-  "nombre": "Javier",
-  "apellido": "Herrera",
-  "usuario": "JaviH",
-  "email": "javi@hd.com",
-  "telefono": "115896325",
-  "domicilio": "San Martín 41",
-  "localidad": "Capital Federal",
-  "claveUsuario": "Hola123"
- },
- {
-  "id": 7,
-  "profile": "usuario",
-  "userAdmin": 0,
-  "nombre": "Javier",
-  "apellido": "Herrera",
-  "usuario": "JaviH",
-  "email": "javi@hd.com",
-  "telefono": "115896325",
-  "domicilio": "San Martín 41",
-  "localidad": "Capital Federal",
-  "claveUsuario": "Hola123"
- },
- {
-  "id": 8,
-  "profile": "usuario",
-  "userAdmin": 0,
-  "nombre": "Javier",
-  "apellido": "Herrera",
-  "usuario": "JaviH",
-  "email": "javi@hd.com",
-  "telefono": "118956123",
-  "domicilio": "San Martín 41",
-  "localidad": "Capital Federal",
-  "claveUsuario": "Hola123",
-  "imagen": "img_user-31046.jpg"
- },
- {
-  "id": 9,
-  "profile": "usuario",
-  "userAdmin": 0,
-  "nombre": "Javier",
-  "apellido": "Herrera",
-  "usuario": "JaviH",
-  "email": "javi@hd.com",
-  "telefono": "118956123",
-  "domicilio": "San Martín 41",
-  "localidad": "Capital Federal",
-  "claveUsuario": "Hola123",
-  "imagen": "img_user-152197.png"
- },
- {
-  "id": 10,
   "profile": "usuario",
   "userAdmin": 0,
   "nombre": "Javier",
@@ -132,19 +68,5 @@
   "localidad": "Capital Federal",
   "claveUsuario": "$2a$10$HAJJ/JqJmogEP00YGYFiu.4B9PXWE8DYQ4didnQuTlippi61yOPu2",
   "imagen": "img_user-31046.jpg"
- },
- {
-  "id": 11,
-  "profile": "usuario",
-  "userAdmin": 0,
-  "nombre": "Javier",
-  "apellido": "Herrera",
-  "usuario": "Javierrrr",
-  "email": "javi@hd.net",
-  "telefono": "112345345",
-  "domicilio": "Purmamarca 333",
-  "localidad": "Jujuy",
-  "claveUsuario": "$2a$10$c1DFnYXaG0P.6ftvjYyEa.dWK7mt3QRoShkAklWNLTugxa4zpSSqu",
-  "imagen": "img_user-152197.png"
  }
 ]

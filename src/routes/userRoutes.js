@@ -10,7 +10,10 @@ const usersController = require ('../controllers/usersController');
 
 // MIDLEWARES
 const validations = require ('../../middlewares/validations');
-const multerUsersDiskStorage = require ('../../middlewares/multerUsersDiskStorage')
+const multerUsersDiskStorage = require ('../../middlewares/multerUsersDiskStorage');
+const guestMiddleware = require('../../middlewares/guestMiddleware');
+const authMiddleware = require('../../middlewares/authMiddleware');
+
 // Tratamiento de Imagenes
 
 
@@ -21,24 +24,20 @@ const uploadFile = multer({ storage: multerUsersDiskStorage });
 // RUTAS
 
 // Formulario de el login
-router.get('/login', usersController.login);
+router.get('/login',guestMiddleware, usersController.login);
 
 // Procesar el login
 router.post('/login', usersController.loginProcess);
 
-// [ check('email').isEmail().withMessage('Email invalido')
-//     check('contraseña').islenght({min:8}).withMessage('la contraseña debe contener 8 caractereses'),
-// ], 
-
 //Formulario de Registro
-router.get('/registro', usersController.registro);
+router.get('/registro',guestMiddleware, usersController.registro);
 
 //Procesar el Registro
 router.post('/registro', uploadFile.single('fotoDePerfil'), validations, usersController.ProcesarRegistro);
 
-
-router.get('/profileAdmin',usersController.profileAdmin);
-router.get('/profileUser',usersController.profile);
+//Perfil de Usuario
+router.get('/profileAdmin',authMiddleware,usersController.profile);
+router.get('/profileUser',authMiddleware,usersController.profile);
 
 
 

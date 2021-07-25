@@ -23,7 +23,7 @@
         <main class="profile_main">
             <div class="profile_container">
                 <div class="profile_title">
-                    <h2 class="profile_logo">Perfil de <span class="profile_logo2"> Administrador </span></h2>
+                    <h2 class="profile_logo">Perfil de <span class="profile_logo2"> <%= user.nombre %> </span></h2>
                 </div> 
                 <div class="profile_box">
                     <div class="profile_center_logo">
@@ -34,22 +34,22 @@
                     <div class="profile_datos">
                         <div class="profile_group_info">
                             <p > Nombre: </p>
-                            <p class="profile_info"> Pedro </p>
+                            <p class="profile_info"> <%=user.nombre%> </p>
                         </div>
 
                         <div class="profile_group_info">
                             <p > Apellido: </p>
-                            <p class="profile_info"> Perez </p>
+                            <p class="profile_info"> <%=user.apellido %> </p>
                         </div>
 
                         <div class="profile_group_info">
                             <p> E-mail: </p>
-                            <p class="profile_info"> p.perez@gmail.com </p>
+                            <p class="profile_info"> <%=user.email %> </p>
                         </div>
 
                         <div class="profile_group_info">
                             <p> Teléfono: </p>
-                            <p class="profile_info"> (+54 9 11) 70665555 </p>
+                            <p class="profile_info"> <%=user.telefono %> </p>
                         </div>
 
                         <div class="profile_group_info">

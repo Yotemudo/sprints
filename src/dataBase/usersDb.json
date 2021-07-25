@@ -1,60 +1,60 @@
 [
  {
   "id": 1,
+  "profile": "usuario",
+  "userAdmin": 1,
   "nombre": "Hernan",
   "apellido": "Miranda",
   "usuario": "Her123",
-  "claveUsuario": "Hola",
   "email": "hernan.miranda@gmail.com",
-  "telefono": 55554444,
-  "imagen": "",
-  "profile": "user",
-  "domicilio": "Migueletes 2455",
+  "telefono": "55554444",
+  "domicilio": "Miguereletes 2455",
   "localidad": "CABA",
-  "userAdmin": 1
+  "claveUsuario": "$2a$10$GgopyCd/FWO25fMogUacge0c8VJUiajI0sxgLrGmTnee22n6v0.Yi",
+  "imagen": "img_user-84463.jpg"
  },
  {
   "id": 2,
+  "profile": "usuario",
+  "userAdmin": 1,
   "nombre": "Hector",
   "apellido": "Berrutti",
   "usuario": "Tito123",
-  "claveUsuario": "ElTito01",
   "email": "tito.berru@gmail.com",
-  "telefono": 55554434,
-  "imagen": "",
-  "profile": "user",
-  "domicilio": "Migueletes 4500",
+  "telefono": "5554344",
+  "domicilio": "Miguereletes 2455",
   "localidad": "CABA",
-  "userAdmin": 1
+  "claveUsuario": "$2a$10$zgzvtOWXhAH0tTyone/2f.K.hcS2urSg3OE1pwtM1L9VJU3NPIpCC",
+  "imagen": "img_user-152197.png"
  },
  {
   "id": 3,
+  "profile": "usuario",
+  "userAdmin": 1,
   "nombre": "Gloria",
   "apellido": "Zoldano",
   "usuario": "Glo123",
-  "claveUsuario": "meEncantaEstudiar01",
   "email": "gloria.zoldano@gmail.com",
-  "telefono": 55553333,
-  "imagen": "",
-  "profile": "user",
-  "domicilio": "Migueletes 2500",
-  "localidad": "Cippoleti",
-  "userAdmin": 1
+  "telefono": "5553333",
+  "domicilio": "Miguereletes 2455",
+  "localidad": "Cipolletti",
+  "claveUsuario": "$2a$10$quiLcQBdFCCxSdN85AYMHOIMF7.gYh66vewG8l4ZDX6YyyfHQA7li",
+  "imagen": "img_user-31046.jpg"
  },
  {
-  "id": 4,
-  "nombre": "JuanCarlos",
-  "apellido": "Mejias",
-  "usuario": "Juanca123",
-  "claveUsuario": "vivaVenezuela",
-  "email": "juanMejias@gmail.com",
-  "telefono": 55554446,
-  "imagen": "",
-  "profile": "admin",
-  "domicilio": "Migueletes 5500",
-  "localidad": "Caracas",
-  "userAdmin": 1
- },
+    "id": 4,
+    "profile": "usuario",
+    "userAdmin": 1,
+    "nombre": "JuanCarlos",
+    "apellido": "Mejias",
+    "usuario": "Juanca123",
+    "email": "juanMejias@gmail.com",
+    "telefono": "55554446",
+    "domicilio": "Miguereletes 2455",
+    "localidad": "Caracas",
+    "claveUsuario": "$2a$10$jeLBVDPU1KnCe0Y2AUB2G.UDCqUpp7Ha8xqCcnlcloGHBKU4kz7nO",
+    "imagen": "img_user-71560.jpg"
+   },
  {
   "id": 5,
   "profile": "usuario",
@@ -69,4 +69,5 @@
   "claveUsuario": "$2a$10$HAJJ/JqJmogEP00YGYFiu.4B9PXWE8DYQ4didnQuTlippi61yOPu2",
   "imagen": "img_user-31046.jpg"
  }
+
 ]

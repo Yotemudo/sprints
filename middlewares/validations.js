@@ -10,11 +10,16 @@ const validations = [
     body('telefono').notEmpty().withMessage('Ingresa un teléfono válido'),
     body('domicilio').notEmpty().withMessage('Ingresa tu domicilio'),
     body('localidad').notEmpty().withMessage('Ingresa tu localidad'),
+    body('claveUsuario')
+        .notEmpty().withMessage('Ingresa una contraseña') .bail() 
+        .isLength({min: 8}).withMessage("Debe contener 8 caracteres"),
     body('fotoDePerfil').custom((value,{req})=>{
-        let file = req.file;
+        const file = req.file;
         if(!file){
             throw new Error('Debes subir una imagen de perfil');
-        }else{
+        } else if (!file.mimetype.includes("image")){
+            throw new Error('Subir una imagen valida');  
+        } else{ 
             return true
         }
     })

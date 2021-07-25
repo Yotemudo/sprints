@@ -135,14 +135,20 @@
                                     </div> 
                                 <% } %>
                             </div>
+
                             <div class="cajaDato">
                                 <label for="claveUsuario">CONTRASEÑA</label>
                                 <input 
-                                    type="password" "password" 
+                                    type="password"  
                                     name="claveUsuario" 
                                     id="claveUsuario"
                                     value="<%=locals.oldData?oldData.claveUsuario:""%>"
                                 >
+                                <% if (locals.errors && errors.claveUsuario) { %>
+                                    <div class="classeError">
+                                        <%=errors.claveUsuario.msg %>
+                                    </div> 
+                                <% } %>
                             </div>
                             
                             <div class="cajaDato">

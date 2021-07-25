@@ -44,7 +44,7 @@
               <span>$<%= products[i].precio %> </span> <br>
               <span>Medidas </span> <br>
               
-                <% if (locals.isLogged) { %>
+                <% if (locals.isLogged && locals.userLogged.userAdmin == 1) { %>
                   <div class="carrito-tu-pack"> 
                     <button class="carrito-pack">
                       <a href="/products/edicionProducto/<%= products[i].id %>">EDITAR</a>

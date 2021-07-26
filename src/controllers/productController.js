@@ -65,7 +65,6 @@ const productController = {
                     }else {
                         products[i].imagen =req.file.filename;
                     }
-        		// var productoActualizado = products[i];
 		        break;  
             }       
         }

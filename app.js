@@ -20,10 +20,10 @@ app.use(userLoggedMiddleware);
 
 
 app.use(express.static(path.join(__dirname, './public')));
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: false })); // Necesario para poder obtener la info de los formularios
 app.use(express.json()); // Necesario para trabajar archivos JSON
 app.use(methodOverride('_method')); // necesario para transformar los POST en PUT Y DELETE
-app.use(logMiddleware);
+// app.use(logMiddleware); Por ahora no lo vamos a utilizar
 
 
 

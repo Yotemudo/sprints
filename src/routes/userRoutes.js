@@ -40,6 +40,7 @@ router.post('/registro', uploadFile.single('fotoDePerfil'), validations, usersCo
 router.get('/profileAdmin',authMiddleware,usersController.profile);
 router.get('/profileUser',authMiddleware,usersController.profile);
 
-
+// LogOut
+router.get('/logout',usersController.logout);
 
 module.exports = router;

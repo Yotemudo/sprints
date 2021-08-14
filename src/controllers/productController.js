@@ -25,37 +25,63 @@ const productController = {
     },
 
     edicion:  (req,res) => {
-    
-        let idProductoEditado = req.params;	
-        for(let i=0;i<products.length;i++){
-            if (products[i].id==idProductoEditado.id){
-                var productoEncontrado = products[i];
-            break  
-            }  
-        }  
-        res.render('products/edicionProducto',{productoEncontrado: productoEncontrado});
+        db.Pack.findByPk(req.params.id)
+            .then(function(producto){
+               
+                res.render('products/edicionProducto',{productoEncontrado:producto});
+            })
+      // *********  Dejo la forma de editar con JSON por si implementamos forma OFFLINE *****
+        // let idProductoEditado = req.params;	
+        // for(let i=0;i<products.length;i++){
+        //     if (products[i].id==idProductoEditado.id){
+        //         var productoEncontrado = products[i];
+        //     break  
+        //     }  
+        // }  
+        // res.render('products/edicionProducto',{productoEncontrado: productoEncontrado});
+     
     },
 
     actualizar: (req,res) => {     
-        let idParaCambiar = req.params.id;
-        let ProductoAModificar = req.body;    
-		for(let i=0;i<products.length;i++){
-	        if (products[i].id == idParaCambiar){
-		  	    products[i].numeroDePack = ProductoAModificar.numeroDePack;
-		  	    products[i].radio = ProductoAModificar.radio;
-                products[i].superficie = ProductoAModificar.superficie;
-                products[i].precio = ProductoAModificar.precio;
-                products[i].superficie = ProductoAModificar.superficie;
-                if (req.file == null){
-                        products[i].imagen = products[i].imagen;
-                    }else {
-                        products[i].imagen =req.file.filename;
-                    }
-		        break;  
-            }       
-        }
-		 fs.writeFileSync(productsFilePath, JSON.stringify(products,null, ' '));
-		 res.render('products/producto', {products:products,users:users})
+        db.Pack.update({
+            numeroPack:req.body.numeroPack,
+            radio:req.body.radio,
+            precio:req.body.precio,
+            superficie:req.body.superficie
+        }, {
+            where:{
+                id: req.params.id
+            }})
+        
+           // ** Esto lo hago para poder enviar products a la vista, sino no se ve nada **
+        
+           db.Pack.findAll()
+           .then(function(productos){
+               res.render ('products/producto',{products:productos});
+           }
+       )
+
+        // res.render('products/producto', {products:Pack})
+
+        // let idParaCambiar = req.params.id;
+        // let ProductoAModificar = req.body;    
+		// for(let i=0;i<products.length;i++){
+	    //     if (products[i].id == idParaCambiar){
+		//   	    products[i].numeroDePack = ProductoAModificar.numeroDePack;
+		//   	    products[i].radio = ProductoAModificar.radio;
+        //         products[i].superficie = ProductoAModificar.superficie;
+        //         products[i].precio = ProductoAModificar.precio;
+        //         products[i].superficie = ProductoAModificar.superficie;
+        //         if (req.file == null){
+        //                 products[i].imagen = products[i].imagen;
+        //             }else {
+        //                 products[i].imagen =req.file.filename;
+        //             }
+		//         break;  
+        //     }       
+        // }
+		//  fs.writeFileSync(productsFilePath, JSON.stringify(products,null, ' '));
+		//  res.render('products/producto', {products:products,users:users})
    
         },
 

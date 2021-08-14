@@ -1,11 +1,12 @@
+const db = require('../database/models');
 
-const User = require('../../models/User');
+//const User = require('../../models/User');
 const bcryptjs = require('bcryptjs');
 
 const fs = require('fs');
 const path = require('path');
-const usersFilePath = path.join(__dirname, '../dataBase/usersDb.json');
-const totalUsers = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
+//const usersFilePath = path.join(__dirname, '../dataBase/usersDb.json');
+//const totalUsers = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
 
 const {validationResult} = require ('express-validator')
 
@@ -26,37 +27,45 @@ const usersController = {
             });
         }
         else{
-            const userInDB = User.findByField('email',req.body.email) //ESTO ES PARA QUE DETECTE USUARIOS CON EMAIL IDENTICOS.
-            if (userInDB){     //ESTO ES PARA QUE MANDE UN ERROR QUE EL USUARIO ESTÁ REGISTRADO
-                 res.render('users/registro',{
-                    errors: {
-                        email: {
-                        msg: 'Este email ya está registrado'
+            db.Usuario.findByField('email',req.body.email) //ESTO ES PARA QUE DETECTE USUARIOS CON EMAIL IDENTICOS.
+            .then(function(userInDB){
+
+                if (userInDB){     //ESTO ES PARA QUE MANDE UN ERROR QUE EL USUARIO ESTÁ REGISTRADO
+                    res.render('users/registro',{
+                        errors: {
+                            email: {
+                            msg: 'Este email ya está registrado'
+                            }
+                            },
+                        oldData: old
                         }
-                        },
-                    oldData: old
-                    }
-                )
-            }
-        else{
-            let userToCreate = {   //ESTO ES PARA CREAR USUARIO
-                ...req.body,
-                claveUsuario: bcryptjs.hashSync(req.body.claveUsuario,10),
-                imagen: req.file.filename
-            };
-    
-            User.create(userToCreate); 
-            return res.redirect('login');
-        }  
-    }   
+                    )
+                }
+            else{
+                let userToCreate = {   //ESTO ES PARA CREAR USUARIO
+                    ...req.body,
+                    claveUsuario: bcryptjs.hashSync(req.body.claveUsuario,10),
+                    imagen: req.file.filename
+                };
+        
+                User.create(userToCreate); 
+                return res.redirect('login');
+            }  
+            }   
+        )}
     },
 
     login: (req,res) => {
-     res.render ('users/login');             
+    res.render ('users/login');             
     },
 
     loginProcess: (req,res) => {
-        let userToLogin = User.findByField('usuario', req.body.usuario);
+        db.Usuario.findOne({
+            where: {
+                usuario:req.body.usuario
+            }
+        })
+        .then(function(userToLogin){
     
         if (userToLogin){
             let isOkLaClave = bcryptjs.compareSync(req.body.claveUsuario,userToLogin.claveUsuario)
@@ -83,7 +92,8 @@ const usersController = {
                 }
             }
         });
-    },
+    }
+    )},
 
     profile: (req,res) => {
         let infoUser = req.session.userLogged;
@@ -97,8 +107,6 @@ const usersController = {
             });
         }
     },
-    
-    
 
     profileAdmin: (req,res) => {
         res.render ('users/profileAdmin');

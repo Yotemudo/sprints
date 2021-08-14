@@ -1,38 +1,24 @@
-const fs = require ('fs');
-const path = require ('path');
+const db = require('../database/models');
+
 const { send } = require('process');
 const { localsName } = require('ejs');
-
-const productsFilePath = path.join(__dirname, '../dataBase/productsDb.json');
-const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
-
-const userFilePath = path.join(__dirname, '../dataBase/usersDb.json');
-const users = JSON.parse(fs.readFileSync(userFilePath, 'utf-8'));
 
 const productController = {
     
     //Para mostrar todo el listado de productos
 
     listado: (req,res) => {
-        res.render ('products/producto',{products:products});
-    },
-
-    //Para mostrar el detalle de uno de los productos 
-    // producto: (req,res) => {
-    //     res.render ('products/producto');
-    // },
+        db.Pack.findAll()
+            .then(function(productos){
+                res.render ('products/producto',{products:productos});
+            }
+        )},
 
     carrito: (req,res) => {
-
-        let idProducto = req.params.id;
-        for(let i=0;i<products.length;i++){
-			if (products[i].id==idProducto){
-				var packB = products[i];
-			}
-            
-		}
-    //res.send(packB);
-    res.render ('products/carrito', {packBuscado:packB});
+        db.Pack.findByPk(req.params.id)
+            .then(function(producto){
+                res.render('products/carrito',{packBuscado:producto});
+            })
     },
     carga: (req,res) => {     //create
         res.render ('products/cargaProducto');

@@ -76,6 +76,7 @@ const productController = {
                     res.redirect('/products/producto');
                 })
     },
+    
         // res.render('products/producto', {products:Pack})
 
         // let idParaCambiar = req.params.id;

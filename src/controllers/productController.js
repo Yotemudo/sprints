@@ -42,25 +42,40 @@ const productController = {
      
     },
 
-    actualizar: (req,res) => {     
-        db.Pack.update({
-            numeroPack:req.body.numeroPack,
-            radio:req.body.radio,
-            precio:req.body.precio,
-            superficie:req.body.superficie
-        }, {
-            where:{
-                id: req.params.id
-            }})
-        
-           // ** Esto lo hago para poder enviar products a la vista, sino no se ve nada **
-        
-           db.Pack.findAll()
-           .then(function(productos){
-               res.render ('products/producto',{products:productos});
-           }
-       )
+    actualizar: (req,res) => { 
+        // res.send(req.file.filename)
+        // if (req.file == null){
+        //       products[i].imagen = products[i].imagen;
+        //                 }else {
+        //                  products[i].imagen =req.file.filename;
+        //                }
+                    
+    
+        // res.send(req.file.filename)  
+        if (req.file == null){
+            var nombreImagen = 'avatar.jpg'
+            }else {
+            var nombreImagen = req.file.filename
+            }
 
+        db.Pack.update({
+            
+                numeroPack:req.body.numeroPack,
+                radio:req.body.radio,
+                precio:req.body.precio,
+                superficie:req.body.superficie,
+                imagen:nombreImagen
+                      
+                }, {
+                    where:{
+                    id: req.params.id
+                    }
+                })
+                .then(function(update){
+               
+                    res.redirect('/products/producto');
+                })
+    },
         // res.render('products/producto', {products:Pack})
 
         // let idParaCambiar = req.params.id;
@@ -82,38 +97,65 @@ const productController = {
         // }
 		//  fs.writeFileSync(productsFilePath, JSON.stringify(products,null, ' '));
 		//  res.render('products/producto', {products:products,users:users})
-   
-        },
 
     store: (req, res) => {
-        if (req.file == null){
-           var nombreImagen = 'avatar.jpg'
-        }else {
+            if (req.file == null){
+            var nombreImagen = 'avatar.jpg'
+            }else {
             var nombreImagen = req.file.filename
-        }
+            }
+            db.Pack.create({
+                numeroPack: req.body.numeroDePack,
+                radio: req.body.radio,
+                imagen: nombreImagen,
+                superficie: req.body.superficie,
+                precio: req.body.precio
+            })
+    .then(function(create){
+                   
+                        res.redirect('/products/producto');
+                    })
+
+
+        // if (req.file == null){
+        //    var nombreImagen = 'avatar.jpg'
+        // }else {
+        //     var nombreImagen = req.file.filename
+        // }
        
-		let idNuevo = products[products.length-1].id + 1;
-		let nuevoObjeto =  Object.assign({id: idNuevo},req.body,{imagen:nombreImagen});
-		products.push(nuevoObjeto);
-   	    fs.writeFileSync(productsFilePath, JSON.stringify(products,null, ' '));
-            res.render('products/producto', {products:products,users:users})
-	},
+		// let idNuevo = products[products.length-1].id + 1;
+		// let nuevoObjeto =  Object.assign({id: idNuevo},req.body,{imagen:nombreImagen});
+		// products.push(nuevoObjeto);
+   	    // fs.writeFileSync(productsFilePath, JSON.stringify(products,null, ' '));
+        //     res.render('products/producto', {products:products,users:users})
+                },
 
-    destroy : (req, res) => {
+    destroy: (req, res) => {
+        db.Pack.destroy({
+            where : {
+                id:req.params.id
+            }
+        })
+        .then(function(update){
+               
+            res.redirect('/products/producto');
+        })
+    }
 
-		let idProducto = req.params.id;	
-		for(let i=0;i<products.length;i++){
-			if (products[i].id==idProducto){
-				var nombreImagen=products[i].imagen;
-				products.splice(i,1);
-				break;
-			}
-		}
+        //*** */ ESTO LO DEJO POR SI HACEMOS EL OFFLINE ***
+		// let idProducto = req.params.id;	
+		// for(let i=0;i<products.length;i++){
+		// 	if (products[i].id==idProducto){
+		// 		var nombreImagen=products[i].imagen;
+		// 		products.splice(i,1);
+		// 		break;
+		// 	}
+		// }
 		
-	    fs.writeFileSync(productsFilePath, JSON.stringify(products,null, ' '));
-		fs.unlinkSync(path.join(__dirname,'../../public/img/camiones/'+nombreImagen));
-		res.render('index');
-		}
+	    // fs.writeFileSync(productsFilePath, JSON.stringify(products,null, ' '));
+		// fs.unlinkSync(path.join(__dirname,'../../public/img/camiones/'+nombreImagen));
+		// res.render('index');
+		// }
 
 };
 

@@ -40,6 +40,10 @@ router.post('/registro', uploadFile.single('fotoDePerfil'), validations, usersCo
 router.get('/profileAdmin',authMiddleware,usersController.profile);
 router.get('/profileUser',authMiddleware,usersController.profile);
 
+//Actualizar Perfil de Usuario ** Lo Armo Hernan, no funciona **
+router.get('/registroActualizar/:id?',authMiddleware,usersController.profileEdicion);
+router.put('/registroActualizar/:id',authMiddleware,usersController.profileActualizar);
+
 // LogOut
 router.get('/logout',usersController.logout);
 

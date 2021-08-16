@@ -27,8 +27,16 @@ const usersController = {
             });
         }
         else{
-            db.Usuario.findByField('email',req.body.email) //ESTO ES PARA QUE DETECTE USUARIOS CON EMAIL IDENTICOS.
+            db.Usuario.findOne({
+                where:{
+                    email: req.body.email
+                }
+            })
+            
             .then(function(userInDB){
+
+            // db.Usuario.findByField('email',req.body.email) //ESTO ES PARA QUE DETECTE USUARIOS CON EMAIL IDENTICOS.
+            // .then(function(userInDB){
 
                 if (userInDB){     //ESTO ES PARA QUE MANDE UN ERROR QUE EL USUARIO ESTÁ REGISTRADO
                     res.render('users/registro',{
@@ -38,21 +46,39 @@ const usersController = {
                             }
                             },
                         oldData: old
-                        }
-                    )
+                    })
                 }
-            else{
-                let userToCreate = {   //ESTO ES PARA CREAR USUARIO
-                    ...req.body,
-                    claveUsuario: bcryptjs.hashSync(req.body.claveUsuario,10),
-                    imagen: req.file.filename
-                };
-        
-                User.create(userToCreate); 
-                return res.redirect('login');
-            }  
-            }   
-        )}
+                else{  //ESTO ES PARA CREAR USUARIO
+                    db.Usuario.create({
+                        userAdmin: 0,
+                        nombre: req.body.nombre,          //nombre del campo en BD: "name" del Form
+                        apellido: req.body.apellido,
+                        email: req.body.email,
+                        telefono: req.body.telefono,
+                        domicilio: req.body.domicilio,
+                        localidad: req.body.localidad,
+                        usuario: req.body.usuario,
+                        claveUsuario: bcryptjs.hashSync(req.body.claveUsuario,10),
+                        imagen: req.body.fotoDePerfil
+                    })
+                }
+            })
+                    .then(function(create){
+                    res.render('index')
+                    })
+
+                //         let userToCreate = {   //ESTO ES PARA CREAR USUARIO
+                //             ...req.body,
+                //             claveUsuario: bcryptjs.hashSync(req.body.claveUsuario,10),
+                //             imagen: req.file.filename
+                //         };
+                
+                //         User.create(userToCreate); 
+                //         return res.redirect('login');
+                //     }  
+                //     }   
+                // )}
+        }
     },
 
     login: (req,res) => {
@@ -116,9 +142,73 @@ const usersController = {
         res.render ('users/profileUser');
     },
 
+    // profileEdicion: (req,res)=>{
+    //     db.Usuario.findByPk(req.params.id)
+    //         .then(function(usuario){
+               
+    //             res.render('users/registroActualizar',{usuarioEncontrado:usuario});
+    //         })
+    // },
+
+    // profileActualizar: (req,res)=>{
+    //     db.Usuario.update({
+    //         userAdmin: 0,
+    //         nombre: req.body.nombre,          //nombre del campo en BD: "name" del Form
+    //         apellido: req.body.apellido,
+    //         email: req.body.email,
+    //         telefono: req.body.telefono,
+    //         domicilio: req.body.domicilio,
+    //         localidad: req.body.localidad,
+    //         usuario: req.body.usuario,
+    //         claveUsuario: bcryptjs.hashSync(req.body.claveUsuario,10),
+    //         imagen: req.body.fotoDePerfil
+    //     }, {
+    //         where:{
+    //             id: req.params.id
+    //         }
+    //         }
+    //     )
+    //         .then(function(update){
+    //         res.render ('users/profileUser');
+    //         })
+    // },
+
     logout: (req,res) => {
         req.session.destroy();
         return res.redirect('/');
+    },
+    
+    profileEdicion: (req,res)=>{
+            
+             db.Usuario.findByPk(req.params.id)
+                .then(function(usuario){
+                   
+                   res.render('users/registroActualizar',{usuarioEncontrado:usuario})
+                
+               })
+         },
+         // Sin probar, es lo que armo Hernan  -- Verificar!!!!!!
+    profileActualizar: (req,res)=>{
+        db.Usuario.update({
+            userAdmin: 0,
+            nombre: req.body.nombre,          //nombre del campo en BD: "name" del Form
+            apellido: req.body.apellido,
+            email: req.body.email,
+            telefono: req.body.telefono,
+            domicilio: req.body.domicilio,
+            localidad: req.body.localidad,
+            usuario: req.body.usuario,
+            claveUsuario: bcryptjs.hashSync(req.body.claveUsuario,10),
+            imagen: req.body.fotoDePerfil
+        }, {
+            where:{
+                id: req.params.id
+            }
+            }
+        )
+            .then(function(update){
+            res.render ('users/profileUser');
+            })
     }
 }
 

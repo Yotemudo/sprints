@@ -60,7 +60,7 @@ const productController = {
 
         db.Pack.update({
             
-                numeroPack:req.body.numeroPack,
+                numeroPack:req.body.numeroPack,  //nombre del campo en BD: "name" del Form
                 radio:req.body.radio,
                 precio:req.body.precio,
                 superficie:req.body.superficie,

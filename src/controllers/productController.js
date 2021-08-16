@@ -8,13 +8,18 @@ const productController = {
     //Para mostrar todo el listado de productos
 
     listado: (req,res) => {
-        db.Pack.findAll()
+        db.Pack.findAll({
+            order: [
+                ['numeroPack','ASC']
+                
+            ]
+        })
             .then(function(productos){
                 res.render ('products/producto',{products:productos});
             }
         )},
 
-    carrito: (req,res) => {
+      carrito: (req,res) => {
         db.Pack.findByPk(req.params.id)
             .then(function(producto){
                 res.render('products/carrito',{packBuscado:producto});

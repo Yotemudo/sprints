@@ -1,5 +1,7 @@
 
 module.exports = {
+
+  // Esta configuracion apunta al local
   "development": {
     "username": "root",
     "password": null,
@@ -23,12 +25,13 @@ module.exports = {
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
-  // "production": {
-  //   "username": "241156_user",
-  //   "password": "User*2021",
-  //   "database": "proyectointegrador_8",
-  //   "host": "mysql-proyectointegrador.alwaysdata.net",
-  //   "dialect": "mysql",
-  //   "port": 3306
-  // }
+  // Esta configuracion apunta a AlwaysData....********¡¡¡¡ Comentarla Por favor!!!! ********
+  "production": {
+    "username": "241156_user",
+    "password": "User*2021",
+    "database": "proyectointegrador_8",
+    "host": "mysql-proyectointegrador.alwaysdata.net",
+    "dialect": "mysql",
+    "port": 3306
+  }
 }

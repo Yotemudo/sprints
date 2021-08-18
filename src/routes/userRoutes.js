@@ -42,7 +42,7 @@ router.get('/profileUser',authMiddleware,usersController.profile);
 
 //Actualizar Perfil de Usuario ** Lo Armo Hernan, no funciona **
 router.get('/registroActualizar/:id?',authMiddleware,usersController.profileEdicion);
-router.put('/registroActualizar/:id',authMiddleware,usersController.profileActualizar);
+router.put('/registroActualizar/:id',authMiddleware,uploadFile.single('fotoDePerfil'),usersController.profileActualizar);
 
 // LogOut
 router.get('/logout',usersController.logout);

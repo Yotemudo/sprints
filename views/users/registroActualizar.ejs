@@ -33,8 +33,7 @@
         <div class="formulario_entero">
             <div class="formulario_de_contacto_gral">
                 <h1> Datos de usuario </h1>     
-                   
-                <form action="/users/registroActualizar" method='POST' enctype="multipart/form-data">
+                <form name="edicionUsuario" method='POST' action="/users/registroActualizar/<%=usuarioEncontrado.id%>?_method=PUT" enctype="multipart/form-data">
                     <div class="datos">
                         <div class="datos_de_contacto">
                             <div class="cajaDato">
@@ -44,7 +43,7 @@
                                     name="nombre" 
                                     id="nombre"
                                     placeholder="<%=usuarioEncontrado.nombre %> "
-                                    value="<%=locals.oldData?oldData.nombre:""%>"
+                                    value="<%=usuarioEncontrado.nombre %>%>"
                                 >
                                 <% if (locals.errors && errors.nombre) { %>
                                     <div class="classeError">
@@ -59,7 +58,7 @@
                                     name="apellido" 
                                     id="apellido"
                                     placeholder="<%=usuarioEncontrado.apellido %> "
-                                    value="<%=locals.oldData?oldData.apellido:""%>"
+                                    value="<%=usuarioEncontrado.apellido %>"
                                 >
                                 <% if (locals.errors && errors.apellido) { %>
                                     <div class="classeError">
@@ -74,7 +73,7 @@
                                     name="usuario" 
                                     id="usuario"
                                     placeholder="<%=usuarioEncontrado.usuario %> "
-                                    value="<%=locals.oldData?oldData.usuario:""%>"
+                                    value="<%=usuarioEncontrado.usuario %>"
                                 >
                                 <% if (locals.errors && errors.usuario) { %>
                                     <div class="classeError">
@@ -89,7 +88,7 @@
                                     name="email" 
                                     id="email"
                                     placeholder="<%=usuarioEncontrado.email %> "
-                                    value="<%=locals.oldData?oldData.email:""%>"
+                                    value="<%=usuarioEncontrado.email %>"
                                 >
                                 <% if (locals.errors && errors.email) { %>
                                     <div class="classeError">
@@ -104,7 +103,7 @@
                                     name="telefono" 
                                     id="telefono" 
                                     placeholder="<%=usuarioEncontrado.telefono %> "
-                                    value="<%=locals.oldData?oldData.telefono:""%>"
+                                    value="<%=usuarioEncontrado.telefono %>"
                                 >
                                 <% if (locals.errors && errors.telefono) { %>
                                     <div class="classeError">
@@ -119,7 +118,7 @@
                                     name="domicilio" 
                                     id="domicilio" 
                                     placeholder="<%=usuarioEncontrado.domicilio %> "
-                                    value="<%=locals.oldData?oldData.domicilio:""%>"
+                                    value="<%=usuarioEncontrado.domicilio %>"
                                 >
                                 <% if (locals.errors && errors.domicilio) { %>
                                     <div class="classeError">
@@ -134,7 +133,7 @@
                                     name="localidad" 
                                     id="localidad"
                                     placeholder="<%=usuarioEncontrado.localidad %> "
-                                    value="<%=locals.oldData?oldData.localidad:""%>"
+                                    value="<%=usuarioEncontrado.localidad %>"
                                     >
                                 <% if (locals.errors && errors.localidad) { %>
                                     <div class="classeError">
@@ -149,7 +148,7 @@
                                     type="password"  
                                     name="claveUsuario" 
                                     id="claveUsuario"
-                                    placeholder=""
+                                    placeholder="***"
                                     value="<%=locals.oldData?oldData.claveUsuario:""%>"
                                 >
                                 <% if (locals.errors && errors.claveUsuario) { %>

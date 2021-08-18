@@ -142,37 +142,6 @@ const usersController = {
         res.render ('users/profileUser');
     },
 
-    // profileEdicion: (req,res)=>{
-    //     db.Usuario.findByPk(req.params.id)
-    //         .then(function(usuario){
-               
-    //             res.render('users/registroActualizar',{usuarioEncontrado:usuario});
-    //         })
-    // },
-
-    // profileActualizar: (req,res)=>{
-    //     db.Usuario.update({
-    //         userAdmin: 0,
-    //         nombre: req.body.nombre,          //nombre del campo en BD: "name" del Form
-    //         apellido: req.body.apellido,
-    //         email: req.body.email,
-    //         telefono: req.body.telefono,
-    //         domicilio: req.body.domicilio,
-    //         localidad: req.body.localidad,
-    //         usuario: req.body.usuario,
-    //         claveUsuario: bcryptjs.hashSync(req.body.claveUsuario,10),
-    //         imagen: req.body.fotoDePerfil
-    //     }, {
-    //         where:{
-    //             id: req.params.id
-    //         }
-    //         }
-    //     )
-    //         .then(function(update){
-    //         res.render ('users/profileUser');
-    //         })
-    // },
-
     logout: (req,res) => {
         req.session.destroy();
         return res.redirect('/');
@@ -188,10 +157,18 @@ const usersController = {
                })
          },
          // Sin probar, es lo que armo Hernan  -- Verificar!!!!!!
-    profileActualizar: (req,res)=>{
+   
+     profileActualizar: (req,res)=>{
+         //Tratamiento de imagenes
+        if (req.file == null){
+            var nombreImagen = 'avatar.jpg'
+            }else {
+            var nombreImagen = req.file.filename
+            }        
+
         db.Usuario.update({
             userAdmin: 0,
-            nombre: req.body.nombre,          //nombre del campo en BD: "name" del Form
+            nombre: req.body.nombre,         
             apellido: req.body.apellido,
             email: req.body.email,
             telefono: req.body.telefono,
@@ -199,7 +176,7 @@ const usersController = {
             localidad: req.body.localidad,
             usuario: req.body.usuario,
             claveUsuario: bcryptjs.hashSync(req.body.claveUsuario,10),
-            imagen: req.body.fotoDePerfil
+            imagen: nombreImagen
         }, {
             where:{
                 id: req.params.id
@@ -207,9 +184,14 @@ const usersController = {
             }
         )
             .then(function(update){
-            res.render ('users/profileUser');
+            res.redirect ('/users/profileUser');
             })
-    }
+    },
+                   
+    
+            
 }
+                            
+   
 
 module.exports = usersController;

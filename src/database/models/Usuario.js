@@ -12,23 +12,23 @@ function usuarioData(sequelize,DataTypes){
 
         userAdmin: {type: DataTypes.TINYINT(2)},
 
-        nombre: {type: DataTypes.STRING(20)},
+        nombre: {type: DataTypes.STRING(200)},
 
-        apellido: {type: DataTypes.STRING(20)},
+        apellido: {type: DataTypes.STRING(200)},
 
-        email: {type: DataTypes.STRING(20)},
+        email: {type: DataTypes.STRING(200)},
 
         telefono: {type: DataTypes.INTEGER(20)},
 
-        domicilio: {type: DataTypes.STRING(50)},
+        domicilio: {type: DataTypes.STRING(500)},
 
-        localidad: {type: DataTypes.STRING(50)},
+        localidad: {type: DataTypes.STRING(500)},
 
-        usuario: {type: DataTypes.STRING(20)},
+        usuario: {type: DataTypes.STRING(200)},
 
         claveUsuario: {type: DataTypes.STRING(100)},
 
-        imagen: {type: DataTypes.STRING(10)},
+        imagen: {type: DataTypes.STRING(100)},
     
     };  
     

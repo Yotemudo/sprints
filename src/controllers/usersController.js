@@ -59,7 +59,7 @@ const usersController = {
                         localidad: req.body.localidad,
                         usuario: req.body.usuario,
                         claveUsuario: bcryptjs.hashSync(req.body.claveUsuario,10),
-                        imagen: req.body.fotoDePerfil
+                        imagen: req.file.filename
                     })
                 }
             })

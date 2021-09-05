@@ -11,6 +11,11 @@ body {
 h2{
     text-align: center;
 }
+
+.ul_errores{
+    color:red;
+    font-style: italic;
+}
 .contenedor01{
     display: flex;
     flex-wrap:wrap;

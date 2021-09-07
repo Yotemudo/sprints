@@ -1,15 +1,8 @@
 const db = require('../database/models');
-
-//const User = require('../../models/User');
 const bcryptjs = require('bcryptjs');
-
 const fs = require('fs');
 const path = require('path');
-//const usersFilePath = path.join(__dirname, '../dataBase/usersDb.json');
-//const totalUsers = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
-
 const {validationResult} = require ('express-validator')
-
 const usersController = {
 
     registro: (req,res) => {
@@ -35,9 +28,6 @@ const usersController = {
             
             .then(function(userInDB){
 
-            // db.Usuario.findByField('email',req.body.email) //ESTO ES PARA QUE DETECTE USUARIOS CON EMAIL IDENTICOS.
-            // .then(function(userInDB){
-
                 if (userInDB){     //ESTO ES PARA QUE MANDE UN ERROR QUE EL USUARIO ESTÁ REGISTRADO
                     res.render('users/registro',{
                         errors: {
@@ -48,10 +38,10 @@ const usersController = {
                         oldData: old
                     })
                 }
-                else{  //ESTO ES PARA CREAR USUARIO
+                else{  
                     db.Usuario.create({
                         userAdmin: 0,
-                        nombre: req.body.nombre,          //nombre del campo en BD: "name" del Form
+                        nombre: req.body.nombre,          
                         apellido: req.body.apellido,
                         email: req.body.email,
                         telefono: req.body.telefono,
@@ -63,21 +53,11 @@ const usersController = {
                     })
                 }
             })
-                    .then(function(create){
-                    res.render('index')
+                    .then(function(user){
+                        userToLogin = req.body;
+                      userToLogin.imagen = req.file.filename;
+                     res.render('users/profileUser', {user : userToLogin})
                     })
-
-                //         let userToCreate = {   //ESTO ES PARA CREAR USUARIO
-                //             ...req.body,
-                //             claveUsuario: bcryptjs.hashSync(req.body.claveUsuario,10),
-                //             imagen: req.file.filename
-                //         };
-                
-                //         User.create(userToCreate); 
-                //         return res.redirect('login');
-                //     }  
-                //     }   
-                // )}
         }
     },
 
@@ -134,21 +114,13 @@ const usersController = {
         }
     },
 
-    profileAdmin: (req,res) => {
-        res.render ('users/profileAdmin');
-    },
-
-    profileUser: (req,res) => {
-        res.render ('users/profileUser');
-    },
-
     logout: (req,res) => {
         req.session.destroy();
         return res.redirect('/');
     },
     
     profileEdicion: (req,res)=>{
-            
+        
              db.Usuario.findByPk(req.params.id)
                 .then(function(usuario){
                    
@@ -158,35 +130,45 @@ const usersController = {
          },
          // Sin probar, es lo que armo Hernan  -- Verificar!!!!!!
    
-     profileActualizar: (req,res)=>{
-         //Tratamiento de imagenes
-        if (req.file == null){
-            var nombreImagen = 'avatar.jpg'
-            }else {
-            var nombreImagen = req.file.filename
-            }        
+    profileActualizar: async (req,res)=>{
+            
+            let user = await db.Usuario.findByPk(req.params.id)
+                .catch (function (e){
+                    return res.send(e)
+                })
+              
+            let userUpdate = {
+                userAdmin: req.body.userAdmin,
+                nombre: req.body.nombre,         
+                apellido: req.body.apellido,
+                email: req.body.email,
+                telefono: req.body.telefono,
+                domicilio: req.body.domicilio,
+                localidad: req.body.localidad,
+                usuario: req.body.usuario,
+                claveUsuario: bcryptjs.hashSync(req.body.claveUsuario,10),
+                imagen: user.imagen
+            }
+            if (req.file){
+                userUpdate.imagen = req.file.filename;
+            }
+            let userUpdated = await db.Usuario.update(userUpdate, {
+                where: {
+                    id: req.params.id
+                }    
+            }
+            )
 
-        db.Usuario.update({
-            userAdmin: 0,
-            nombre: req.body.nombre,         
-            apellido: req.body.apellido,
-            email: req.body.email,
-            telefono: req.body.telefono,
-            domicilio: req.body.domicilio,
-            localidad: req.body.localidad,
-            usuario: req.body.usuario,
-            claveUsuario: bcryptjs.hashSync(req.body.claveUsuario,10),
-            imagen: nombreImagen
-        }, {
-            where:{
-                id: req.params.id
-            }
-            }
-        )
-            .then(function(update){
-            res.redirect ('/users/profileUser');
+            .catch (function(e){
+                res.send(e)            
             })
-    },
+            if (user.userAdmin == 0)
+            {
+
+                res.render('users/profileUser', {user});
+            }
+            res.render('users/profileAdmin', {user})
+        },
                    
     
             

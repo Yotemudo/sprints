@@ -173,6 +173,17 @@ background: #d63031;
     height: 30px;
 } 
 
+
+/* ----- -----  Estilos para Validacion ----- ----- */
+
+.erroresEdit{
+    margin-top: 2px;
+    color:red;
+    font-style: italic;
+}
+/* ----- -----  FIN de Estilos para Validacion ----- ----- */
+
+
 /* new footer */
 .mainFooter{
   display: grid;

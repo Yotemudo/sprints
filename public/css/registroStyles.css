@@ -74,6 +74,17 @@
 }
 /* termina el header */
 
+/* ----- -----  Estilos para Validacion ----- ----- */
+
+.ulErroresFrontRegistro{
+    margin-top: 2px;
+    color:red;
+    font-style: italic;
+}
+
+
+/* ----- -----  FIN de Estilos para Validacion ----- ----- */
+
 
 body {
      background: url(../img/imagen-home.jpeg);
@@ -232,34 +243,33 @@ background: #d63031;
 }
 /* new footer */
 .mainFooter{
-  display: grid;
-  margin: auto;
-  grid-template-columns: 48% 30% 20%;
-  grid-template-rows: 15vh;
-  padding-bottom: 20px;
-  text-align: center;
-  background-color: rgba(0, 0, 0, 0.9);
-  color:seashell;
+    display: grid;
+    margin: auto;
+    grid-template-columns: 48% 30% 20%;
+    grid-template-rows: 15vh;
+    padding-bottom: 20px;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.9);
+    color:seashell;
 }
 .mainFooter img{
-  width: 3vw;
-  height: 3vw;
+    width: 3vw;
+    height: 3vw;
 }
 .sectionOneFooter{
-  margin-left: -100px;
+    margin-left: -100px;
 }
 .sectionTwoFooter{
-
-  display: flex;
+    display: flex;
 }
 .sectionThreeFooter{
-  justify-self: center;
-  
-  margin-top: 30px;
-  margin-right: 30px;
-  font-size: 0.8rem; 
+    justify-self: center;
+    margin-top: 30px;
+    margin-right: 30px;
+    font-size: 0.8rem; 
 }
 /* termina new footer */
+
 /* Medias Query */
 @media (min-width: 700px) {
     /* header */
@@ -273,24 +283,24 @@ background: #d63031;
         grid-template-columns: 2fr 1fr;
     }        
     .formulario_de_info {
-padding: 2em;
-}
-.formulario_de_info h4,
-.formulario_de_info ul,
-.formulario_de_info p {
-    padding: .6em;
-}
-.redesSocialesFooter{
-    justify-content: center;
-  }
+        padding: 7em 2em 2em 2em;
+    }
+    .formulario_de_info h4,
+    .formulario_de_info ul,
+    .formulario_de_info p {
+        padding: .6em;
+    }
+    .redesSocialesFooter{
+        justify-content: center;
+    }
 }
 @media (min-width: 1200px){
     .logo {
         margin-top: auto;
-}
-.redesSocialesFooter{
-    justify-content: center;
-  }
+    }
+    .redesSocialesFooter{
+        justify-content: center;
+    }
 }
 @media (min-width:360px )and (max-width: 760px){
     /* header */
@@ -315,25 +325,24 @@ padding: 2em;
     }
     /* new footer */
     .mainFooter{
-      display: flex;
-      flex-direction: column;
-      text-align: center;
-      justify-content: center;
-      align-items: center;
-  } 
-  .sectionThreeFooter{
-   justify-self: center;
-   
-   margin-top: 0;
-   margin-right: 0;
-   font-size: 0.8rem; 
-   }
-   .sectionOneFooter{
-   margin-left: 0px;
-   }
-   .mainFooter img {
-    width: 8vw;
-    height: 8vw;
-}
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+    } 
+    .sectionThreeFooter{
+        justify-self: center;
+        margin-top: 0;
+        margin-right: 0;
+        font-size: 0.8rem; 
+    }
+    .sectionOneFooter{
+        margin-left: 0px;
+    }
+    .mainFooter img {
+        width: 8vw;
+        height: 8vw;
+    }
   /* termina el footer */
 }

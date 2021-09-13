@@ -17,6 +17,10 @@
     <!-- Enlace con CCS-->
     <link rel="stylesheet" href="/css/indexNormalize.css">
     <link rel="stylesheet" href="/css/carga-edicion.css">
+
+    <!-- Enlace con js en el Front-->
+    <script src="/scripts/js_EditProdFront.js"></script>
+
 </head>
 
     <body>
@@ -29,33 +33,59 @@
                 <div class="formulario_de_carga_edicion">
                     <h1> Datos del Servicio </h1>
                     
-                    <form name="edicionProducto" method="POST" action="/products/edicionProducto/<%=productoEncontrado.id%>?_method=PUT" method="POST" enctype="multipart/form-data">
+                    <form name="edicionProducto" method="POST" action="/products/edicionProducto/<%=productoEncontrado.id%>?_method=PUT" method="POST" enctype="multipart/form-data" class="editFront-js">
                         <p>
                             <label for="numeroDePack">N° de Pack</label>
-                            <input type="text" name="numeroPack" required placeholder="<%=productoEncontrado.numeroDePack%>" value="<%=productoEncontrado.numeroPack%>">
+                            <input required
+                                class='numeroPack'
+                                type="text" 
+                                name="numeroPack" 
+                                placeholder="<%=productoEncontrado.numeroDePack%>" 
+                                value="<%=productoEncontrado.numeroPack%>">
                         </p>
                         <p>
                             <label for="radio">Radio en Km</label>
-                            <input type="text" name="radio" placeholder="<%=productoEncontrado.radio%>" value="<%=productoEncontrado.radio%>">
+                            <input required
+                                class='km'
+                                type="text" 
+                                name="radio" 
+                                placeholder="<%=productoEncontrado.radio%>" 
+                                value="<%=productoEncontrado.radio%>">
                         </p>
                         <p>
-                            <label for="precio">Costo</label>
-                            <input type="text" name="precio" placeholder="<%=productoEncontrado.precio%>"
-                            value="<%=productoEncontrado.precio%>" >
+                            <label for="precio">Precio</label>
+                            <input required
+                                class='precio'
+                                type="text" 
+                                name="precio" 
+                                placeholder="<%=productoEncontrado.precio%>"
+                                value="<%=productoEncontrado.precio%>" >
                         </p>
                         <p>
                             <label for="superficie">Medidas</label>
-                            <input type="texto" name="superficie" placeholder="<%=productoEncontrado.superficie%>"
-                            value="<%=productoEncontrado.superficie%>">
+                            <input required
+                                class='medida'
+                                type="texto" 
+                                name="superficie" 
+                                placeholder="<%=productoEncontrado.superficie%>"
+                                value="<%=productoEncontrado.superficie%>">
                         </p>
                         <p>
                             <label for="imagenProducto" class="form-label">Imagen</label>
-						    <input type="file" name="imagenProducto" />
+						    <input 
+                                class= "imagenProducto"
+                                type="file" 
+                                name="imagenProducto" />
                         </p>
-                        
+
+                        <div class="erroresEdit">
+                            <ul></ul>
+                        </div>
+
                             <button type="submit">ENVIAR</button>
                         </p>
                         
+
                     </form>
                 </div>
                 <div class="formulario_de_info">

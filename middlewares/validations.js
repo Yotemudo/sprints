@@ -12,7 +12,7 @@ const validations = [
     body('localidad').notEmpty().withMessage('Ingresa tu localidad'),
     body('claveUsuario')
         .notEmpty().withMessage('Ingresa una contraseña') .bail() 
-        .isLength({min: 8}).withMessage("Debe contener 8 caracteres"),
+        .isLength({min: 7}).withMessage("Debe contener 7 caracteres"),
     body('fotoDePerfil').custom((value,{req})=>{
         const file = req.file;
         if(!file){

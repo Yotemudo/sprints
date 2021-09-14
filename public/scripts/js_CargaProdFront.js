@@ -1,5 +1,5 @@
 window.addEventListener('load', function(){                      //con esto le pido que primero cargue todo el html
-    let formulario = document.querySelector('form.editFront-js');    // capturo el elemento
+    let formulario = document.querySelector('form.cargaFront-js');    // capturo el elemento
     
     formulario.addEventListener('submit', function(e){
        
@@ -75,7 +75,7 @@ window.addEventListener('load', function(){                      //con esto le p
              else if(campoImgProd.files[0].size > 200000){
                      erroresDeEdicion.push("El peso de la imagen debe ser menor a 200 kb");
              }
-            // console.log(campoImgProd.files)
+            console.log(campoImgProd.files)
 
 
 

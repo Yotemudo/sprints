@@ -7,7 +7,8 @@ window.addEventListener('load', function(){                      //con esto le p
 
             // Validacion de Nombre //
         let campoNombre = document.querySelector('input.nombre');
-        let nombreValido=/^[a-zA-Z0-9]{3,20}$/;     // 4 a 16 Letras, numeros, guion y guion_bajo
+        let nombreValido=/^[a-zA]{3,20}$/;     // 4 a 16 Letras, numeros, guion y guion_bajo
+        // /^[a-zA-Z0-9]{3,20}$/  esta expresion admite numeros
         if (campoNombre.value==""){
             erroresDeRegistro.push("Debes ingresar tu nombre")
         }else if(!nombreValido.test(campoNombre.value)){
@@ -16,7 +17,7 @@ window.addEventListener('load', function(){                      //con esto le p
 
             // Validacion de Apellido//
         let campoApellido = document.querySelector('input.apellido')
-        let apellidoValido=/^[a-zA-Z0-9]{2,20}$/;     // 4 a 16 Letras, numeros, guion y guion_bajo
+        let apellidoValido=/^[a-zA]{2,20}$/;     // 4 a 16 Letras, numeros, guion y guion_bajo
         if (campoApellido.value==""){
             erroresDeRegistro.push("Debes ingresar tu apellido")
         }else if(!apellidoValido.test(campoApellido.value)){
@@ -26,7 +27,6 @@ window.addEventListener('load', function(){                      //con esto le p
             // Validacion de Usuario //
         let campoUsuario=document.querySelector('input.usuario')
         if (campoUsuario.value==""){
-            campoUsuario.classList.add('fa-check-circle');
             erroresDeRegistro.push("Debes elegir un usuario")
         }
 

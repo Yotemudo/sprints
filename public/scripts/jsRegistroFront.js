@@ -93,10 +93,10 @@ window.addEventListener('load', function(){                      //con esto le p
         }
         else if(passwordValido==false){
             erroresDeRegistro.push('La contraseña debe tener entre 7 y 16 caracteres') 
-            erroresDeRegistro.push('La contraseña debe tener al menos un dígito') 
+            erroresDeRegistro.push('La contraseña debe tener al menos un numero') 
             erroresDeRegistro.push('La contraseña debe tener al menos una minúscula')
             erroresDeRegistro.push('La contraseña debe tener al menos una mayúscula')
-            erroresDeRegistro.push('La contraseña debe tener al menos un caracter no alfanumérico')
+            erroresDeRegistro.push('La contraseña debe tener al menos un caracter especial')
         }
         // console.log(campoPassword.value.length)
 

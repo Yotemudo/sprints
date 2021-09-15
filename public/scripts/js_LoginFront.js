@@ -23,10 +23,10 @@ window.addEventListener('load', function(){                      //con esto le p
         }
         else if(passwordValido==false){
             erroresDeAcceso.push('La contraseña debe tener entre 7 y 16 caracteres') 
-            erroresDeAcceso.push('La contraseña debe tener al menos un dígito') 
+            erroresDeAcceso.push('La contraseña debe tener al menos un numero') 
             erroresDeAcceso.push('La contraseña debe tener al menos una minúscula')
             erroresDeAcceso.push('La contraseña debe tener al menos una mayúscula')
-            erroresDeAcceso.push('La contraseña debe tener al menos un caracter no alfanumérico')
+            erroresDeAcceso.push('La contraseña debe tener al menos un caracter especial')
         }
         // console.log(password.value.length)
 

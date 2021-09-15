@@ -7,28 +7,32 @@ window.addEventListener('load', function(){                      //con esto le p
 
             // Validacion de Nombre //
         let campoNombre = document.querySelector('input.nombre');
-        let nombreValido=/^[a-zA]{3,20}$/;     // 4 a 16 Letras, numeros, guion y guion_bajo
+        let nombreValido=/^[a-zA-Z]{3,20}$/;     // 4 a 16 Letras, numeros, guion y guion_bajo
         // /^[a-zA-Z0-9]{3,20}$/  esta expresion admite numeros
         if (campoNombre.value==""){
             erroresDeRegistro.push("Debes ingresar tu nombre")
         }else if(!nombreValido.test(campoNombre.value)){
-            erroresDeRegistro.push("El nombre debe contener entre 3 y 16 Letras, sin numeros ni caracteres especiales")
+            erroresDeRegistro.push("El nombre debe tener entre 3 y 20 letras, sin numeros ni caracteres especiales")
         }
 
             // Validacion de Apellido//
         let campoApellido = document.querySelector('input.apellido')
-        let apellidoValido=/^[a-zA]{2,20}$/;     // 4 a 16 Letras, numeros, guion y guion_bajo
+        let apellidoValido=/^[a-zA-Z]{2,20}$/;     // 4 a 16 Letras, numeros, guion y guion_bajo
         if (campoApellido.value==""){
             erroresDeRegistro.push("Debes ingresar tu apellido")
         }else if(!apellidoValido.test(campoApellido.value)){
-            erroresDeRegistro.push("El apellido debe contener más de 2 Letras, sin numeros ni caracteres especiales")
+            erroresDeRegistro.push("El apellido debe tener entre 2 y 20 letras, sin numeros ni caracteres especiales")
         }
 
             // Validacion de Usuario //
         let campoUsuario=document.querySelector('input.usuario')
+        // let usuarioValido=/^[a-zA-Z]{5,20}$/;     // 4 a 16 Letras, numeros, guion y guion_bajo
         if (campoUsuario.value==""){
             erroresDeRegistro.push("Debes elegir un usuario")
+        }else if(campoUsuario.value.length >200){
+            erroresDeRegistro.push("El usuario no podrá tener más de 200 caracteres")
         }
+        // console.log(campoUsuario.value.length)
 
 //             // Validacion de email//
         let campoEmail = document.querySelector('input.email')
@@ -40,18 +44,21 @@ window.addEventListener('load', function(){                      //con esto le p
         }
         else if (mailValido==false){
            erroresDeRegistro.push("Formato de email incorrecto")
+        }else if(campoEmail.value.length >50){
+            erroresDeRegistro.push("El email no podrá tener mas de 50 caracteres")
         }
+        // console.log(campoEmail.value.length)
 
 //             // Validacion de Telefono//
         let campoTelefono = document.querySelector('input.telefono')
-        let expRegTelefono=/^\d{7,14}$/  //7 a 14 numeros
+        let expRegTelefono=/^\d{7,20}$/  //7 a 14 numeros
                         // /^\(? (\ d {3}) \)? [-]? (\ d {4}) [-]? (\ d {4})$/      //alternativa que no funcionó
         let telefonoValido=expRegTelefono.test(campoTelefono.value);
         if (campoTelefono.value==""){
             erroresDeRegistro.push("Debes ingresar un teléfono con formato 4444-4444")
         }
         else if (telefonoValido==false){
-           erroresDeRegistro.push("Formato de telefono no válido")
+           erroresDeRegistro.push("Formato de telefono no válido. No podrá superar los 20 digitos")
         }
 
             // Validacion de Domicilio //
@@ -59,12 +66,20 @@ window.addEventListener('load', function(){                      //con esto le p
         if (campoDomicilio.value==""){
             erroresDeRegistro.push("Debes ingresar un domicilio")
         }
+        else if(campoDomicilio.value.length >500){
+            erroresDeRegistro.push("El domicilio no podrá tener mas de 500 caracteres")
+        }
+        // console.log(campoDomicilio.value.length)
 
             // Validacion de localidad//
         let campoLocalidad = document.querySelector('input.localidad')
         if (campoLocalidad.value==""){
             erroresDeRegistro.push("Debes ingresar una localidad")
         }
+        else if(campoLocalidad.value.length >500){
+            erroresDeRegistro.push("La localidad no podrá tener mas de 500 caracteres")
+        }
+        // console.log(campoLocalidad.value.length)
 
             // Validacion de Contraseña//
         let campoPassword = document.querySelector('input.password')
@@ -73,13 +88,17 @@ window.addEventListener('load', function(){                      //con esto le p
         if (campoPassword.value==""){
             erroresDeRegistro.push("Debes ingresar una contraseña")
         }
+        else if(campoPassword.value.length >100){
+            erroresDeRegistro.push("La contraseña no podrá tener mas de 100 caracteres")
+        }
         else if(passwordValido==false){
             erroresDeRegistro.push('La contraseña debe tener entre 7 y 16 caracteres') 
             erroresDeRegistro.push('La contraseña debe tener al menos un dígito') 
             erroresDeRegistro.push('La contraseña debe tener al menos una minúscula')
             erroresDeRegistro.push('La contraseña debe tener al menos una mayúscula')
             erroresDeRegistro.push('La contraseña debe tener al menos un caracter no alfanumérico')
-}
+        }
+        // console.log(campoPassword.value.length)
 
             // Validacion de Imagen de Perfil //
         let campoImagen = document.querySelector('input.imagen');

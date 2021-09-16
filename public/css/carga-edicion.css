@@ -89,7 +89,6 @@ body {
     box-shadow: 0 0 20px 0 rgba(255,255,255, .3);
     background: rgba(0,0,0,.4);
     padding: 1em;
-    color:antiquewhite;
 }
 .formulario_de_carga_edicion h1 {
     text-align: center;
@@ -173,17 +172,6 @@ background: #d63031;
     width: 35px;
     height: 30px;
 } 
-
-
-/* ----- -----  Estilos para Validacion ----- ----- */
-
-.erroresEdit{
-    margin-top: 2px;
-    color:red;
-    font-style: italic;
-}
-/* ----- -----  FIN de Estilos para Validacion ----- ----- */
-
 
 /* new footer */
 .mainFooter{

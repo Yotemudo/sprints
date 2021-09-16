@@ -13,15 +13,10 @@
 
     <!--    Font awesome  -->
     <script src="https://kit.fontawesome.com/29db22af69.js" crossorigin="anonymous"></script>
-    <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
 
     <!-- Enlace con CCS-->
     <link rel="stylesheet" href="/css/indexNormalize.css">
     <link rel="stylesheet" href="/css/registroStyles.css">
-    
-    <!-- Enlace con js en el Front-->
-    <script src='/scripts/jsRegistroFront.js'></script>
-
 </head> 
     
     <body>
@@ -39,13 +34,12 @@
             <div class="formulario_de_contacto_gral">
                 <h1> Datos de usuario </h1>     
                    
-                <form action="/users/registro" method='POST' enctype="multipart/form-data" class="jsFrontRegistro ">
+                <form action="/users/registro" method='POST' enctype="multipart/form-data">
                     <div class="datos">
                         <div class="datos_de_contacto">
                             <div class="cajaDato">
                                 <label for="nombre">NOMBRE </label>
                                 <input 
-                                    class="nombre"
                                     type="text" 
                                     name="nombre" 
                                     id="nombre"
@@ -60,7 +54,6 @@
                             <div class="cajaDato">
                                 <label for="apellido">APELLIDO</label>
                                 <input 
-                                    class="apellido"
                                     type="text" 
                                     name="apellido" 
                                     id="apellido"
@@ -75,13 +68,11 @@
                             <div class="cajaDato">
                                 <label for="usuario">USUARIO</label>
                                 <input 
-                                    class="usuario"
                                     type="text" 
                                     name="usuario" 
                                     id="usuario"
                                     value="<%=locals.oldData?oldData.usuario:""%>"
                                 >
-                                <!-- <i class="formulario__validacion-estado fas fa-times-circle"></i> -->
                                 <% if (locals.errors && errors.usuario) { %>
                                     <div class="classeError">
                                         <%=errors.usuario.msg %>
@@ -89,14 +80,12 @@
                                 <% } %>
                             </div>
                             <div class="cajaDato">
-                                <label for="email">E-MAIL</label> <br>
+                                <label for="email">E-MAIL</label>
                                 <input 
-                                   class="email"
                                     type="text" 
                                     name="email" 
                                     id="email"
                                     value="<%=locals.oldData?oldData.email:""%>"
-                                    placeholder="correo electronico"
                                 >
                                 <% if (locals.errors && errors.email) { %>
                                     <div class="classeError">
@@ -107,12 +96,10 @@
                             <div class="cajaDato">
                                 <label for="telefono">TELEFONO</label>
                                 <input 
-                                    class="telefono"
-                                    type="number" 
+                                    type="tel" 
                                     name="telefono" 
                                     id="telefono" 
                                     value="<%=locals.oldData?oldData.telefono:""%>"
-                                    placeholder="11 4444 4444"
                                 >
                                 <% if (locals.errors && errors.telefono) { %>
                                     <div class="classeError">
@@ -123,12 +110,10 @@
                             <div class="cajaDato">
                                 <label for="domicilio">DOMICILIO</label>
                                 <input 
-                                    class="domicilio"
                                     type="text" 
                                     name="domicilio" 
                                     id="domicilio" 
                                     value="<%=locals.oldData?oldData.domicilio:""%>"
-                                    placeholder="Ingrese calle y altura"
                                 >
                                 <% if (locals.errors && errors.domicilio) { %>
                                     <div class="classeError">
@@ -139,12 +124,10 @@
                             <div class="cajaDato">
                                 <label for="localidad">LOCALIDAD</label>
                                 <input 
-                                    class="localidad"
                                     type="text" 
                                     name="localidad" 
                                     id="localidad" 
                                     value="<%=locals.oldData?oldData.localidad:""%>"
-                                    placeholder="Ingrese su localidad"
                                     >
                                 <% if (locals.errors && errors.localidad) { %>
                                     <div class="classeError">
@@ -156,7 +139,6 @@
                             <div class="cajaDato">
                                 <label for="claveUsuario">CONTRASEÑA</label>
                                 <input 
-                                    class="password"
                                     type="password"  
                                     name="claveUsuario" 
                                     id="claveUsuario"
@@ -172,7 +154,6 @@
                             <div class="cajaDato">
                                 <label for="fotoDePerfil">FOTO DE PERFIL</label>
                                 <input 
-                                    class= "imagen"
                                     type="file" 
                                     name="fotoDePerfil" 
                                     id="fotoDePerfil"
@@ -191,11 +172,8 @@
                 </form>
             </div>
             <div class="formulario_de_info">
-                 <!-- <h4>SOBRE NOSOTROS</h4> -->
-                 <div class="ulErroresFrontRegistro">
-                     <ul></ul>
-                </div>
-                <!-- <ul>
+                <h4>SOBRE NOSOTROS</h4>
+                <ul>
                     <li> <i class="fas fa-map-marker-alt"> Juan Agustin Lorca 24</i> </li>
                     <li> <i class="fas fa-phone-"> 011 4682 9857</i></li>
                     <li> <i class="fas fa-envelope"> contacto@yotemudo.com</i></li>
@@ -205,7 +183,7 @@
                 </p>
                 <p>
                     YoTeMudo.com
-                </p> -->
+                </p>
             </div>
         </div>
     </div>

@@ -20,57 +20,62 @@
                                 alt='Imagen de tilde'></img></span>
                     </button>
                                 <img src="/img/camiones/<%=packBuscado.imagen%>" alt="Camion Mudanza 1" class="imagenCamion">
-                    <h3>PACK Nro. <%=packBuscado.numeroDePack%></h3>
-                    <span>Radio <%=packBuscado.radio%> km </span> <br>
-                    <span> Para <%=packBuscado.superficie%> Mts2 </span> <br>
-                    <span>$<%=packBuscado.precio%></span> <br>
-                    <span>Medidas </span> <br>
-                    <span><a href="/products/carrito"><img src="/img/carrito1.png" alt="" class="btn-precio "></a></span>  
+                    <h3>PACK Nro. <%=packBuscado.numeroPack%></h3>
+                    <span><b>Precio: $ <%=packBuscado.precio%></b></span> <br>
+                    <span>Radio: <%=packBuscado.radio%> km </span> <br>
+                    <span> Para: <%=packBuscado.superficie%> Mts2 </span> <br>
+                    
+                    <!-- <span>Medidas </span> <br> -->
+                    <!-- <span><a href="/products/carrito"><img src="/img/carrito1.png" alt="" class="btn-precio "></a></span>   -->
         
             </div>
             <div class="carrito-servicios">
                 <h4 class="carrito-serad">Servicios Adicionales</h4>
                 <ul type=none>
-                    <li><input type="checkbox"><label class="carrito-tipo"> Traslado en Día Feriado </label></li>
-                    <li><input type="checkbox"><label class="carrito-tipo"> Asistente Adicional </label></li>
-                    <li><input type="checkbox"><label class="carrito-tipo"> Servicio de Embalaje </label></li>
-                    <li><input type="checkbox"><label class="carrito-tipo"> Variedad en Cajas</label></li>
-                    <li><input type="checkbox"><label class="carrito-tipo"> Cintas adhesivas </label></li>
-                    <li><input type="checkbox"><label class="carrito-tipo"> Goma espuma </label></li>
-                    <li><input type="checkbox"><label class="carrito-tipo"> Depósito Temporal </label></li>
-                    <li><input type="checkbox"><label class="carrito-tipo"> Depósito Permantente </label></li>
+                    <li><input type="checkbox"><label class="carrito-tipo Traslado"> Traslado en Día Feriado </label> <br></li>
+                    <li><input type="checkbox"><label class="carrito-tipo Asistente"> Asistente Adicional </label></li>
+                    <li><input type="checkbox"><label class="carrito-tipo Embalaje"> Servicio de Embalaje </label></li>
+                    <li><input type="checkbox"><label class="carrito-tipo Cajas"> Variedad en Cajas</label></li>
+                    <li><input type="checkbox"><label class="carrito-tipo Cintas"> Cintas adhesivas </label></li>
+                    <li><input type="checkbox"><label class="carrito-tipo Espuma"> Goma espuma </label></li>
+                    <li><input type="checkbox"><label class="carrito-tipo DepositoTemp"> Depósito Temporal </label></li>
+                    <li><input type="checkbox"><label class="carrito-tipo DepositoPerm"> Depósito Permantente </label></li>
                 </ul>
             </div>
 
-            <div class="carrito-adicionales">
+            <!-- <div class="carrito-adicionales">
                 <h3 class="carrito-invitar"> Te invitamos a Seleccionar tus servicios adicionales </h3>
                 <br>
                 <img id="carrito-lapiz" width="100" height="100" src="/img/bloc.png" alt='Imagen de bloc'></img>
-            </div>
+            </div> -->
 
             <div class="carrito-botones">
                 <br>
                 <br>
-                <button class="carrito-ok pack">OK quiero PACK
+                 <div class="costo">
+                    <h3>Precio Total con Servicios: $23600</h3>
+                    <!-- <a href="#" class="detalle">Mis servicios</a> -->
+                </div>
+                <% if (locals.isLogged) { %>
+                <button class="carrito-ok pack"> <a href="/products/carritoConfirm/<%=packBuscado.id%>">OK quiero PACK
                     <span class="icon"><img width="25" height="25" src="/img/hecho-garrapata.png"
-                            alt='Imagen de tilde'></img></span>
+                            alt='Imagen de tilde'></img></span></a>
                 </button>
-
+                <% } else { %>
+    <br>               <h5>Por favor <a href="/users/login">Iniciar Sesion</a> para poder continuar en su carrito de compras</h5>
+                 <% } %>
                 <button class="carrito-volver">
-                    <a href="/">
+                    <a href="/products/producto">
                     VOLVER
                     <span class="icon"><img width="25" height="25" src='/img/arriba.png'
                             alt='Imagen de flecha hacia arriba'></img></span></a>
                 </button>
 
-                <div class="carrito">
+                <!-- <div class="carrito">
                     <img width="35" height="35" src='/img/carrito-de-compras.png' alt='Imagen de ahopping cart'></img>
-                </div>
+                </div> -->
 
-                <div class="costo">
-                    <h3>$23600</h3>
-                    <a href="#" class="detalle">Mis servicios</a>
-                </div>
+               
             </div>
 
         </div>
@@ -85,6 +90,7 @@
           <div class="rrss"><img src="/img/linkedin.png" class="logoFacebook"/></div>  
         </div>  
       </footer> -->
+      <script src="/scripts/carritoValues.js"></script>
 </body>
 
 </html>

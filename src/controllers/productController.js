@@ -6,7 +6,30 @@ const { localsName } = require('ejs');
 const productController = {
     
     //Para mostrar todo el listado de productos
+    // listado: (req,res) => {
+    //     db.Pack.findAll({include:[{association:'servicio_adicional'}]},{
+    //         order: [
+    //             ['numeroPack','ASC']
+                
+    //         ]
+    //     })
+    //         .then(function(productos){
 
+    //             let precioSer = [];
+                
+    //             for (producto of productos){
+    //                 let objaux = {
+    //                     cajas: producto.servicio_adicional[0].cajas,
+    //                     gomaEspuma: producto.servicio_adicional[0].gomaEspuma
+    //                 }
+    //             precioSer.push(objaux);
+    //             }
+    //             res.render ('products/producto',{products:productos});
+    //         // res.render ('products/producto',{products:productos}, {precioSer});
+    //     //    return res.send({productos}) 
+    //         }
+    //     )
+    // },
     listado: (req,res) => {
         db.Pack.findAll({
             order: [
@@ -19,10 +42,44 @@ const productController = {
             }
         )},
 
-      carrito: (req,res) => {
+    carrito: (req,res) => {
+        db.Pack.findAll({include:[{association:'servicio_adicional'}]},{
+            order: [
+                ['numeroPack','ASC']
+                
+            ]
+        })
+            .then(function(productos){
+
+                let precioSer = [];
+                
+                for (producto of productos){
+                    let objaux = {
+                        trasladoDiaFeriado: producto.servicio_adicional[0].trasladoDiaFeriado,
+                        asistente: producto.servicio_adicional[0].asistente,
+                        embalaje: producto.servicio_adicional[0].embalaje,
+                        cajas: producto.servicio_adicional[0].cajas,
+                        adhesivo: producto.servicio_adicional[0].adhesivo,
+                        gomaEspuma: producto.servicio_adicional[0].gomaEspuma,
+                        depositoTemporal: producto.servicio_adicional[0].depositoTemporal,
+                        pack_id: producto.servicio_adicional[0].pack_id,
+                        fecha_actualizacion: producto.servicio_adicional[0].fecha_actualizacion,
+                    }
+                precioSer.push(objaux);
+                }
+                let packBuscado = productos[req.params.id-1]
+                res.render('products/carrito',{packBuscado});
+            // res.render ('products/producto',{products:productos}, {precioSer});
+                //  res.send({packBuscado}) 
+            }
+        )
+    
+    },
+    carrito_ok: (req,res) => {
         db.Pack.findByPk(req.params.id)
             .then(function(producto){
-                res.render('products/carrito',{packBuscado:producto});
+                // res.render('products/carrito',{packBuscado:producto});
+                res.send(producto)
             })
     },
     carga: (req,res) => {     //create

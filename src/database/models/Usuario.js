@@ -7,6 +7,7 @@ function usuarioData(sequelize,DataTypes){
         id: {
             type: DataTypes.INTEGER(11),
             primaryKey: true,
+            allowNull:false,
             autoIncrement: true
         },
 
@@ -33,11 +34,22 @@ function usuarioData(sequelize,DataTypes){
     };  
     
     config = {
+        camelCase: true,
         timestamps: false,
         tableName: 'usuario'
     };
 
-    const usuario = sequelize.define(alias,cols,config)
+    const usuario = sequelize.define(alias,cols,config);
+
+    usuario.associate = (models) => {
+
+        usuario.hasMany(models.Usuario_producto, {
+            as: 'usuario_producto',
+            foreignKey: 'usuario_id'
+
+        })
+
+    }
 
     return usuario;
 

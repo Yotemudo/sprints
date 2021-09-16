@@ -5,9 +5,11 @@ function packData(sequelize,DataTypes){
     alias = 'Pack';
     cols = {
         id: {
-            type: DataTypes.INTEGER(100),
+            type: DataTypes.INTEGER(11),
             primaryKey: true,
-            autoIncrement: true
+            allowNull:false,
+            autoIncrement: true,
+            
         },
 
         numeroPack: {type: DataTypes.INTEGER(100)},
@@ -23,11 +25,22 @@ function packData(sequelize,DataTypes){
     };  
     
     config = {
+        camelCase: true,
         timestamps: false,
         tableName: 'pack'
     };
 
-    const pack = sequelize.define(alias,cols,config)
+    const pack = sequelize.define(alias,cols,config);
+
+    pack.associate = (models) => {
+
+    pack.hasMany(models.Servicio_adicional, {
+            as: 'servicio_adicional',
+            foreignKey: 'pack_id'
+
+        })
+
+    }
 
     return pack;
 

@@ -13,14 +13,14 @@ const productController = {
                 
     //         ]
     //     })
-    //         .then(function(productos){
+    //              then(function(productos){
 
-    //             let precioSer = [];
+    //                 let precioSer = [];
                 
-    //             for (producto of productos){
-    //                 let objaux = {
-    //                     cajas: producto.servicio_adicional[0].cajas,
-    //                     gomaEspuma: producto.servicio_adicional[0].gomaEspuma
+    //                 for (producto of productos){
+    //                     let objaux = {
+    //                         cajas: producto.servicio_adicional[0].cajas,
+    //                         gomaEspuma: producto.servicio_adicional[0].gomaEspuma
     //                 }
     //             precioSer.push(objaux);
     //             }
@@ -68,7 +68,7 @@ const productController = {
                 precioSer.push(objaux);
                 }
                 let packBuscado = productos[req.params.id-1]
-                res.render('products/carrito',{packBuscado});
+                res.render('products/carritoConfirm',{packBuscado});
             // res.render ('products/producto',{products:productos}, {precioSer});
                 //  res.send({packBuscado}) 
             }

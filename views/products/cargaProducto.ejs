@@ -15,6 +15,10 @@
     <!-- Enlace con CCS-->
     <link rel="stylesheet" href="/css/indexNormalize.css">
     <link rel="stylesheet" href="/css/carga-edicion.css">
+
+    <!-- Enlace con js en el Front-->
+    <script src="/scripts/js_CargaProdFront.js"></script>
+
 </head>
 
     <body>
@@ -32,27 +36,61 @@
             <div class="formulario_entero">
                 <div class="formulario_de_carga_edicion">
                     <h1> Datos del Servicio </h1>
-                    <form name="cargaProducto" method="POST" action="cargaProducto" enctype="multipart/form-data">
+                    <form name="cargaProducto" method="POST" action="cargaProducto" enctype="multipart/form-data" class="cargaFront-js">
                         <p>
-                            <label for="numeros">N° de Pack</label>
-                            <input type="text" name="numeroDePack" required>
+                            <label for="numeros">N° de Pack
+                            <input required
+                                class='numeroPack'
+                                type="text" 
+                                name="numeroDePack"
+                                id='numeros' >
+                            </label>                            
                         </p>
                         <p>
-                            <label for="texto">Radio en Km</label>
-                            <input type="text" name="radio">
+                            <label for="texto">Radio en Km
+                            <input required
+                                class='km'
+                                type="text" 
+                                name="radio"
+                                id='texto'>
+                            </label>
                         </p>
                         <p>
-                            <label for="precio">Costo</label>
-                            <input type="text" name="precio">
+                            <label for="precio">Precio
+                            <input required
+                                class='precio'
+                                type="text" 
+                                name="precio"
+                                id='precio'>
+                            </label>
                         </p>
                         <p>
-                            <label for="medidas">Medidas</label>
-                            <input type="texto" name="medidas">
+                            <label for="medidas">Medidas
+                            <input required
+                                class='medida'
+                                type="texto" 
+                                name="medidas"
+                                id='medidas'>
+                            </label>
                         </p>
-                        <label for="imagenProducto" class="form-label">Imagen</label>
-						<input type="file" name="imagenProducto" />
+                        <p>
+                            <label for="imagenProducto" class="form-label">Imagen
+						    <input 
+                                class= "imagenProducto"
+                                type="file" 
+                                name="imagenProducto" 
+                                id="imagenProducto">
+                            </label>
+                        </p>
+
+                       
+                                <div class="erroresEdit">
+                                    <ul></ul>
+                                </div>
+                            
                             <button type="submit">ENVIAR</button>
-                        </p>
+                      
+
                     </form>
                 </div>
                 <div class="formulario_de_info">
@@ -62,7 +100,7 @@
                         <span>Radio ?? km </span> <br>
                         <span>?? Mts2 </span> <br>
                         <span>Precio </span> <br>
-                        <span>Medidas </span> <br>
+                        <!-- <span>Medidas </span> <br> -->
                         <span><a href="/carrito"><img src="/img/carrito1.png" alt="" class="btn-precio "></a></span>
                     </div>
                 </div>

@@ -78,8 +78,8 @@ const productController = {
     carrito_ok: (req,res) => {
         db.Pack.findByPk(req.params.id)
             .then(function(producto){
-                // res.render('products/carrito',{packBuscado:producto});
-                res.send(producto)
+                res.render('products/carrito',{packBuscado:producto});
+                // res.send(producto)
             })
     },
     carga: (req,res) => {     //create

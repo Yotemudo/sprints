@@ -17,6 +17,10 @@
     <!-- Enlace con CCS-->
     <link rel="stylesheet" href="/css/indexNormalize.css">
     <link rel="stylesheet" href="/css/carga-edicion.css">
+
+    <!-- Enlace con js en el Front-->
+    <script src="/scripts/js_EditProdFront.js"></script>
+
 </head>
 
     <body>
@@ -24,38 +28,74 @@
         <%- include('../partials/header') %> 
         <main>
             <div class="content">
-                <h2 class="logo">Edición de Pack<span class="logo2"> <%=productoEncontrado.numeroDePack%> </span></h2>
+                <h2 class="logo">Edición de <span class="logo2">Pack <%=productoEncontrado.numeroDePack%> </span></h2>
             <div class="formulario_entero">
                 <div class="formulario_de_carga_edicion">
                     <h1> Datos del Servicio </h1>
                     
-                    <form name="edicionProducto" method="POST" action="/products/edicionProducto/<%=productoEncontrado.id%>?_method=PUT" method="POST" enctype="multipart/form-data">
+                    <form name="edicionProducto" method="POST" action="/products/edicionProducto/<%=productoEncontrado.id%>?_method=PUT" method="POST" enctype="multipart/form-data" class="editFront-js">
                         <p>
-                            <label for="numeroDePack">N° de Pack</label>
-                            <input type="text" name="numeroPack" required placeholder="<%=productoEncontrado.numeroDePack%>" value="<%=productoEncontrado.numeroPack%>">
+                            <label for="numeroDePack">N° de Pack
+                            <input required
+                                class='numeroPack'
+                                type="text" 
+                                name="numeroPack" 
+                                id='numeroDePack'
+                                placeholder="<%=productoEncontrado.numeroDePack%>" 
+                                value="<%=productoEncontrado.numeroPack%>">
+                            </label>
                         </p>
                         <p>
-                            <label for="radio">Radio en Km</label>
-                            <input type="text" name="radio" placeholder="<%=productoEncontrado.radio%>" value="<%=productoEncontrado.radio%>">
+                            <label for="radio">Radio en Km
+                            <input required
+                                class='km'
+                                type="text" 
+                                name="radio" 
+                                id='radio'
+                                placeholder="<%=productoEncontrado.radio%>" 
+                                value="<%=productoEncontrado.radio%>">
+                            </label>
                         </p>
                         <p>
-                            <label for="precio">Costo</label>
-                            <input type="text" name="precio" placeholder="<%=productoEncontrado.precio%>"
-                            value="<%=productoEncontrado.precio%>" >
+                            <label for="precio">Precio
+                            <input required
+                                class='precio'
+                                type="text" 
+                                name="precio" 
+                                id='precio'
+                                placeholder="<%=productoEncontrado.precio%>"
+                                value="<%=productoEncontrado.precio%>" >
+                            </label>
                         </p>
                         <p>
-                            <label for="superficie">Medidas</label>
-                            <input type="texto" name="superficie" placeholder="<%=productoEncontrado.superficie%>"
-                            value="<%=productoEncontrado.superficie%>">
+                            <label for="superficie">Medidas
+                            <input required
+                                class='medida'
+                                type="texto" 
+                                name="superficie" 
+                                id='superficie'
+                                placeholder="<%=productoEncontrado.superficie%>"
+                                value="<%=productoEncontrado.superficie%>">
+                            </label>
                         </p>
                         <p>
-                            <label for="imagenProducto" class="form-label">Imagen</label>
-						    <input type="file" name="imagenProducto" />
+                            <label for="imagenProducto" class="form-label">Imagen
+						    <input 
+                                class= "imagenProducto"
+                                type="file" 
+                                name="imagenProducto" 
+                                id='imagenProducto'>
+                            </label>
                         </p>
-                        
+
+                        <div class="erroresEdit">
+                            <ul></ul>
+                        </div>
+
                             <button type="submit">ENVIAR</button>
-                        </p>
+
                         
+
                     </form>
                 </div>
                 <div class="formulario_de_info">
@@ -65,7 +105,7 @@
                         <span>Radio <%=productoEncontrado.radio%> km </span> <br>
                         <span><%=productoEncontrado.superficie%> Mts2 </span> <br>
                         <span>$<%=productoEncontrado.precio%></span> <br>
-                        <span>Medidas </span> <br>
+                        <!-- <span>Medidas </span> <br> -->
                         <span><a href="/carrito"><img src="/img/carrito1.png" alt="" class="btn-precio "></a></span>
                     </div>
                 </div>

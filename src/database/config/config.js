@@ -36,7 +36,7 @@ module.exports = {
    "production": {
     "username": "241156_user",
     "password": "User*2021",
-    "database": "proyectointegrador_8",
+    "database": "proyectointegrador_gloria",
     "host": "mysql-proyectointegrador.alwaysdata.net",
     "dialect": "mysql",
     "port": 3306

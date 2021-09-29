@@ -1,14 +1,14 @@
 module.exports = {
  // Esta configuracion apunta al local
 
-  // "development": {
-  //   "username": "root",
-  //   "password": null,
-  //   "database": "yotemudo",
-  //   "host": "127.0.0.1",
-  //   "dialect": "mysql",
-  //   "port": 3306
-  // },
+  "development": {
+    "username": "root",
+    "password": null,
+    "database": "yotemudo",
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "port": 3306
+  },
   // Esta configuracion apunta a AlwaysData....********¡¡¡¡ Comentarla Por favor!!!! ********
     // "development": {
   //   "username": "241156_user",

@@ -65,7 +65,7 @@ app.use('/busquedaProducto', APIpackRoutes);
 
 
 
-app.listen(process.env.PORT || 3001, function () {
+app.listen(process.env.PORT || 3000, function () {
     console.log('Servidor corriendo en el puerto 3000');
 });
 

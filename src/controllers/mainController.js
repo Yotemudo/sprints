@@ -1,13 +1,13 @@
 const mainController = {
-    index: (req,res) => {
-       res.render ('index');
-    },
+   index: (req, res) => {
+      res.render('index');
+   },
 
-    quienesSomos: (req,res) => {
-        res.render ('aboutUs/quienesSomos');
-       
-     }
+   quienesSomos: (req, res) => {
+      res.render('aboutUs/quienesSomos');
+
+   }
 
 };
 
-module.exports = mainController; 
+module.exports = mainController;

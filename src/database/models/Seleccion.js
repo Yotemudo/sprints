@@ -1,45 +1,45 @@
 // alias, cols, config
 
-function seleccionData(sequelize,DataTypes){
+function seleccionData(sequelize, DataTypes) {
 
-    alias = 'Seleccion';
-    cols = {
-        id: {
+    alias = 'Seleccion';
+    cols = {
+        id: {
             type: DataTypes.INTEGER(11),
             primaryKey: true,
-            allowNull:false,
+            allowNull: false,
             autoIncrement: true
         },
 
-        cajas: {type: DataTypes.TINYINT(1)},
+        cajas: { type: DataTypes.TINYINT(1) },
 
-        gomaEspuma: {type: DataTypes.TINYINT(1)},
+        gomaEspuma: { type: DataTypes.TINYINT(1) },
 
-        depositoTemporario: {type: DataTypes.TINYINT(1)},
+        depositoTemporario: { type: DataTypes.TINYINT(1) },
 
-        embalaje: {type: DataTypes.TINYINT(1)},
+        embalaje: { type: DataTypes.TINYINT(1) },
 
-        adhesivo: {type: DataTypes.TINYINT(1)},
+        adhesivo: { type: DataTypes.TINYINT(1) },
 
-        depositoPermanente: {type: DataTypes.TINYINT(1)},
+        depositoPermanente: { type: DataTypes.TINYINT(1) },
 
-        asistente: {type: DataTypes.TINYINT(1)},
+        asistente: { type: DataTypes.TINYINT(1) },
 
-        trasladoDiaFeriado: {type: DataTypes.TINYINT(1)}
-    
-    };  
-    
-    config = {
+        trasladoDiaFeriado: { type: DataTypes.TINYINT(1) }
+
+    };
+
+    config = {
         camelCase: true,
         timestamps: false,
         tableName: 'seleccion'
     };
 
-    const seleccion = sequelize.define(alias,cols,config);
+    const seleccion = sequelize.define(alias, cols, config);
 
     seleccion.associate = (models) => {
 
-    seleccion.hasMany(models.Usuario_producto, {
+        seleccion.hasMany(models.Usuario_producto, {
             as: 'usuario_producto',
             foreignKey: 'seleccion_id'
 
@@ -47,9 +47,8 @@ function seleccionData(sequelize,DataTypes){
 
     }
 
-    return seleccion;
+    return seleccion;
 
-    }
+}
 
-    module.exports = seleccionData;
-    
+module.exports = seleccionData;

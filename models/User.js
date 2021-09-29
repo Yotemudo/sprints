@@ -7,18 +7,18 @@ const User = {
     fileName: './src/dataBase/usersDb.json',
 
     getData: function () {
-        return JSON.parse(fs.readFileSync(this.fileName,'utf-8'));
+        return JSON.parse(fs.readFileSync(this.fileName, 'utf-8'));
     },
 
     generateId: function () {
         let allUsers = this.findAll();
         let lastUser = allUsers.pop();
-        if (lastUser){
+        if (lastUser) {
             return lastUser.id + 1;
-        }    
-        return 1;    
+        }
+        return 1;
     },
-    
+
     findAll: function () {
         return this.getData();
     },
@@ -44,14 +44,14 @@ const User = {
             ...userData
         }
         allUsers.push(newUser);
-        fs.writeFileSync(this.fileName,JSON.stringify(allUsers, null, ' '));
+        fs.writeFileSync(this.fileName, JSON.stringify(allUsers, null, ' '));
         return newUser;
     },
 
     delete: function (id) {
         let allUsers = this.findAll();
         let finalUsers = allUsers.filter(oneUser => oneUser.id !== id);
-        fs.writeFileSync(this.fileName,JSON.stringify(finalUsers, null, ' '));
+        fs.writeFileSync(this.fileName, JSON.stringify(finalUsers, null, ' '));
         return true;
     }
 }

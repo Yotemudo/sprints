@@ -11,62 +11,65 @@
 </head>
 
 <body>
-  <%- include('../partials/header') %> 
-  <main>
-    <div class="container">
-   
-      <div class="cont-button">
-        <div class="carrito-tu-pack">
-          <a href="#" class="botonPack">
-            <button class="carrito-pack">Viajo Solo
-              <span class="icon"></span>
-            </button>
-          </a>
+  <%- include('../partials/header') %>
+    <main>
+      <div class="container">
+
+        <div class="cont-button">
+          <div class="carrito-tu-pack">
+            <a href="#" class="botonPack">
+              <button class="carrito-pack">Viajo Solo
+                <span class="icon"></span>
+              </button>
+            </a>
+          </div>
+          <div class="carrito-tu-pack">
+            <a href="#" class="botonPack">
+              <button class="carrito-pack">Comparto Viaje
+                <span class="icon"></span>
+              </button>
+            </a>
+          </div>
         </div>
-        <div class="carrito-tu-pack">
-          <a href="#" class="botonPack">
-            <button class="carrito-pack">Comparto Viaje
-              <span class="icon"></span>
-            </button>
-          </a>
-        </div>
-      </div>
-      
-      <div class="packs">
-          <% for(let i = 0; i < products.length; i++) { %>
+
+        <div class="packs">
+          <% for(let i=0; i < products.length; i++) { %>
             <div class="packUnitario">
-          
+
               <img src="/img/camiones/<%= products[i].imagen %>" alt="Camion Mudanza 1" class="imagenCamion">
 
-              <h3>Pack Nro.<%= products[i].numeroPack %></h3>
+              <h3>Pack Nro.<%= products[i].numeroPack %>
+              </h3>
               <span>radio: <%= products[i].radio %>km </span> <br>
               <span>superficie: <%= products[i].superficie %> Mts2 </span> <br>
               <br>
               <span>valor: $ <%= products[i].precio %> </span> <br>
               <!-- <span>Medidas </span> <br> -->
-              
-                <% if (locals.isLogged && locals.userLogged.userAdmin == 1) { %>
-                  <div class="carrito-tu-pack"> 
-                    <button class="carrito-pack">
-                      <a href="/products/edicionProducto/<%= products[i].id %>">EDITAR</a>
-                    </button>
+
+              <% if (locals.isLogged && locals.userLogged.userAdmin==1) { %>
+                <div class="carrito-tu-pack">
+                  <button class="carrito-pack">
+                    <a href="/products/edicionProducto/<%= products[i].id %>">EDITAR</a>
+                  </button>
                   </a>
                 </div>
                 <div class="carrito-tu-pack">
-                  
-                  <form action="/products/<%=products[i].id %>?_method=DELETE" method="POST" onsubmit="return confirm('Esta seguro que desea eliminarlo?');">
-                    <button class="carrito-pack"  type="submit" class="action-button delete">
+
+                  <form action="/products/<%=products[i].id %>?_method=DELETE" method="POST"
+                    onsubmit="return confirm('Esta seguro que desea eliminarlo?');">
+                    <button class="carrito-pack" type="submit" class="action-button delete">
                       ELIMINAR
                     </button>
                   </form>
                 </div>
                 <% } %>
-                
-              <span><a href="/products/carrito/<%=products[i].id%>"><img src="/img/carrito1.png" alt="" class="btn-precio "></a></span>
-            </div>
-          <% } %>
 
-        <!-- <div class="packs">
+                  <span><a href="/products/carrito/<%=products[i].id%>"><img src="/img/carrito1.png" alt=""
+                        class="btn-precio "></a></span>
+            </div>
+            <% } %>
+
+              <!-- <div class="packs">
           <div class="packUnitario">
             <img src="/img/camiones/flota-00_2.jpg" alt="Camion Mudanza 1" class="imagenCamion">
             <h3>PACK 1</h3>
@@ -106,10 +109,10 @@
             <span>Medidas </span> <br>
             <span><a href="/products/carrito"><img src="/img/carrito1.png" alt="" class="btn-precio "></a></span>
           </div> -->
-      </div> 
-    </div>
-  </main>
-  <%- include('../partials/footer') %> 
+        </div>
+      </div>
+    </main>
+    <%- include('../partials/footer') %>
 </body>
 
 </html>

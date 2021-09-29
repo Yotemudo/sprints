@@ -1,45 +1,45 @@
 // alias, cols, config
 
-function usuarioData(sequelize,DataTypes){
+function usuarioData(sequelize, DataTypes) {
 
-    alias = 'Usuario';
-    cols = {
-        id: {
+    alias = 'Usuario';
+    cols = {
+        id: {
             type: DataTypes.INTEGER(11),
             primaryKey: true,
-            allowNull:false,
+            allowNull: false,
             autoIncrement: true
         },
 
-        userAdmin: {type: DataTypes.TINYINT(2)},
+        userAdmin: { type: DataTypes.TINYINT(2) },
 
-        nombre: {type: DataTypes.STRING(200)},
+        nombre: { type: DataTypes.STRING(200) },
 
-        apellido: {type: DataTypes.STRING(200)},
+        apellido: { type: DataTypes.STRING(200) },
 
-        email: {type: DataTypes.STRING(200)},
+        email: { type: DataTypes.STRING(200) },
 
-        telefono: {type: DataTypes.INTEGER(20)},
+        telefono: { type: DataTypes.INTEGER(20) },
 
-        domicilio: {type: DataTypes.STRING(500)},
+        domicilio: { type: DataTypes.STRING(500) },
 
-        localidad: {type: DataTypes.STRING(500)},
+        localidad: { type: DataTypes.STRING(500) },
 
-        usuario: {type: DataTypes.STRING(200)},
+        usuario: { type: DataTypes.STRING(200) },
 
-        claveUsuario: {type: DataTypes.STRING(100)},
+        claveUsuario: { type: DataTypes.STRING(100) },
 
-        imagen: {type: DataTypes.STRING(100)},
-    
-    };  
-    
-    config = {
+        imagen: { type: DataTypes.STRING(100) },
+
+    };
+
+    config = {
         camelCase: true,
         timestamps: false,
         tableName: 'usuario'
     };
 
-    const usuario = sequelize.define(alias,cols,config);
+    const usuario = sequelize.define(alias, cols, config);
 
     usuario.associate = (models) => {
 
@@ -51,9 +51,8 @@ function usuarioData(sequelize,DataTypes){
 
     }
 
-    return usuario;
+    return usuario;
 
-    }
+}
 
-    module.exports = usuarioData;
-    
+module.exports = usuarioData;

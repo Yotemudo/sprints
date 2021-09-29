@@ -11,14 +11,6 @@
     padding: 10px
 }
 
-/* body {
-    background: #eee
-} */
-
-/* .cart {
-    background: #fff
-} */
-
 .p-about {
     font-size: 12px
 }
@@ -105,8 +97,30 @@ label.radio input:checked+span {
     font-size: 11px
 }
 #pack{
-    display:none;
-}
-#traslado2{
     display:true;
 }
+#traslado{
+    display: true;
+}
+#asistente{
+    display: true;
+}
+#embalaje{
+    display: true;
+}
+#cajas{
+    display: true;
+}
+#cintas{
+    display: true;
+}
+#espuma{
+    display: true;
+}
+#depositoT{
+    display: true;
+}
+#depositoP{
+    display: true;
+}
+

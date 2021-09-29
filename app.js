@@ -6,7 +6,7 @@ const methodOverride = require('method-override');
 
 const logMiddleware = require('./middlewares/logMiddlewares');
 const userLoggedMiddleware = require('./middlewares/userLoggedMiddleware');
-const cors = require('cors');
+// const cors = require('cors');
 
 const app = express();
 
@@ -18,7 +18,7 @@ app.use(session({
     saveUninitialized: false,
 }));
 app.use(userLoggedMiddleware);
-app.use(cors());
+// app.use(cors());
 
 
 app.use(express.static(path.join(__dirname, './public')));
